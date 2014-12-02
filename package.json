@@ -5,7 +5,7 @@
   "description": "a Sails + Angular boilerplate application",
   "keywords": [],
   "dependencies": {
-    "sails": "~0.10.0-rc7",
+    "sails": "~0.10.5",
     "sails-disk": "~0.10.0",
     "rc": "~0.3.3",
     "include-all": "~0.1.3",

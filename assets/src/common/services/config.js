@@ -2,15 +2,15 @@ angular.module( 'services.config', ['lodash'])
 
 .service('config', function(lodash) {
 
-	// private vars here if needed
+  // private vars here if needed
 
-	return {
-		siteName: 'Sailng',
-		// no trailing slash!
-		siteUrl: '/',
-		apiUrl: '/api',
+  return {
+    siteName: 'Sailng',
+    // no trailing slash!
+    siteUrl: '/',
+    apiUrl: '/api',
 
-		currentUser: false
-	};
+    currentUser: false
+  };
 
 });
