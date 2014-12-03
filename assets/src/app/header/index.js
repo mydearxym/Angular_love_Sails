@@ -6,8 +6,7 @@ angular.module( 'sailng.header', [
 
     var navItems = [
         {title: 'Messages', translationKey: 'navigation:messages', url: '/messages', cssClass: 'fa fa-comments'},
-        {title: 'About', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-info-circle'},
-        {title: 'testHa', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-info-circle'}
+        {title: 'About', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-info-circle'}
     ];
 
     if (!$scope.currentUser) {

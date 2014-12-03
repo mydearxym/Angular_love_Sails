@@ -67,7 +67,8 @@ var AuthController = {
    */
   logout: function (req, res) {
     req.logout();
-    res.redirect('/');
+    console.log("logout to home");
+    res.redirect('/home');
   },
 
   /**
@@ -118,19 +119,27 @@ var AuthController = {
    * @param {Object} res
    */
   callback: function (req, res) {
+    function tryAgain () {
+      // If an error was thrown, redirect the user to the login which should
+      // take care of rendering the error messages.
+      req.flash('form', req.body);
+      console.log("callback redirect to: ", req.param("action"));
+      res.redirect(req.param('action') === 'register' ? '/register' : '/login');
+    }
+
     passport.callback(req, res, function (err, user) {
-      req.login(user, function (err) {
-        // If an error was thrown, redirect the user to the login which should
-        // take care of rendering the error messages.
-        if (err) {
-          res.redirect('/login');
-        }
+      if (err){
+        console.log("passport.callback.err: " + err);
+        return tryAgain();
+      }
+
+      req.login(user, function (loginErr) {
+        if (loginErr) return tryAgain();
+
         // Upon successful login, send the user to the homepage were req.user
         // will available.
-        else {
-        	console.log('currently logged in user is: ' + req.user.username);
-          res.redirect('/');
-        }
+        console.log("passport callback redirect to home");
+        res.redirect('/home');
       });
     });
   }

@@ -12,10 +12,10 @@ module.exports = {
       required: true,
       unique: true
     },
-    first_name: {
-      type: 'string',
-      required: true
-    },
+//    first_name: {
+//      type: 'string',
+//      required: true
+//    },
     message_count: {
       type: 'number'
     },
