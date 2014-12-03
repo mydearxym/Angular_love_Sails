@@ -7,14 +7,14 @@
         <% errors.forEach(function (error) { %>
         <%= __(error) %>
         <% }) %>
-        <% } %>
+    <% } %>
     </div>
 
     <form class="form-horizontal" role="form" action="/auth/local" method="post">
       <div class="form-group">
         <label for="inputUsername3" class="col-sm-2 control-label">用户名</label>
         <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputUsername3" name="identifier" placeholder="Username">
+          <input type="text" class="form-control" id="inputUsername3" name="identifier" placeholder="username or Email">
           <!--<input type="text" class="form-control" id="inputUsername3" name="user[identifier]" placeholder="Username">-->
         </div>
       </div>
@@ -35,12 +35,10 @@
 
     </form>
 
-    <% if (providers.length) {%>
-    <h4>You can also use one of these...</h4>
-
+    <h4>第三方登陆：</h4>
+    <hr>
     <% Object.keys(providers).forEach(function (key) { %>
     <a href="/auth/<%= providers[key].slug %>" role="button"><%= providers[key].name %></a>
     <% }) %>
-    <% } %>
 
 </div>

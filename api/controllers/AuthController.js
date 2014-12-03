@@ -35,8 +35,12 @@ var AuthController = {
       , providers  = {};
 
     // Get a list of available providers for use in your templates.
+//    console.log("login controller");
     Object.keys(strategies).forEach(function (key) {
-      if (key === 'local') return;
+      if (key === 'local') {
+//        console.log("use local strategies");
+        return;
+      }
 
       providers[key] = {
         name : strategies[key].name
@@ -128,6 +132,7 @@ var AuthController = {
     }
 
     passport.callback(req, res, function (err, user) {
+      console.log("passport.callback");
       if (err){
         console.log("passport.callback.err: " + err);
         return tryAgain();
