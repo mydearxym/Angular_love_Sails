@@ -1,0 +1,21 @@
+
+
+
+
+
+<div class="container">
+    <h3 class="text-success">你好，<%= user.username %><small>请输入你的新密码</small></h3>
+
+    <div class="row">
+        <div class="col-sm-6">
+            <form action="/user/updatepassword/" method="post">
+                <div class="form-group">
+                    <input class="form-control" type="password" name="newpassword" placeholder="新密码">
+                </div>
+                <input type="hidden" name="_csrf" >
+                <input type="hidden" name="resettoken" value=<%= user.resetPassToken %> >
+                <button class="btn btn-success" type="submit">确认修改</button>
+            </form>
+        </div>
+    </div>
+</div>

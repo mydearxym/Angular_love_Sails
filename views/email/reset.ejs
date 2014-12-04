@@ -231,13 +231,10 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 
     <!-- End example table -->
       <!-- Yahoo Link color fix updated: Simply bring your link styling inline. -->
-      <!--<h1>我亲爱的 <%= user.firstName %></h1>-->
+      <h1>我亲爱的 <%= user.email %></h1>
 
         <h4>点击以下链接重设密码</h4>
-
-        测试一哈哈
-        <!--<a href="http://localhost:1337/user/<%= user.id %>/resetpassword/<%= user.resetPassToken %>" target ="_blank" title="resetpassword for your account">http://localhost:1337/user/<%= user.id %>/resetpassword/<%= user.resetPassToken %></a>-->
-
+        <a href="http://localhost:1338/api/user/<%= user.id %>/resetemailcallback/<%= user.resetPassToken %>" target ="_blank" title="resetpassword for your account">http://localhost:1338/api/user/<%= user.id %>/resetemailcallback/<%= user.resetPassToken %></a>
     </td>
   </tr>
   </table>

@@ -46,7 +46,7 @@ module.exports = {
 
   },
 
-  sendresetemail: function(req, res){
+  resetEmail: function(req, res){
     var email = req.param('email')
 
     User.findOneByEmail(email, function(err, user){
@@ -73,6 +73,30 @@ module.exports = {
 
 //      res.send({"found user": user});
     });
+  },
+
+  resetEmailCallback: function(req, res) {
+    var params = req.params.all();
+    sails.log.debug("resetpassword action");
+
+    User.findOne({id: params.id}).exec(function(err, user){
+      console.log("findOne user: ", user);
+      if (err || _.isUndefined(user)) {
+        console.log(err)
+        // todo: replace the imgs from the 404.ejs
+        res.render("404.ejs");
+      } else {
+
+        res.view({
+          layout: 'auth-layout',
+          user: user
+        });
+
+      }
+    });
+
+
   }
+
 
 };
