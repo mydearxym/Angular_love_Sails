@@ -34,7 +34,9 @@
     "passport-twitter": "~1.0.2",
     "passport-github": "~0.1.5",
     "passport-facebook": "~1.0.3",
-    "passport-google": "~0.3.0"
+    "passport-google": "~0.3.0",
+    "nodemailer": "~0.7.1",
+    "mails": "0.0.8"
   },
   "scripts": {
     "start": "node app.js",

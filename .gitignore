@@ -40,9 +40,7 @@
 ################################################
 
 config/local.js
-
-
-
+config/nodemailer.js
 
 
 ################################################
@@ -68,6 +66,7 @@ config/local.js
 
 node_modules
 bower_components
+assets/bower_components
 
 
 

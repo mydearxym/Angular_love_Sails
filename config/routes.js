@@ -39,6 +39,7 @@ module.exports.routes = {
   'post /auth/local/:action': 'AuthController.callback',
 
 
+  'get /test/mail' : "MailerController.test",
   // Custom routes here...
 
     /**
