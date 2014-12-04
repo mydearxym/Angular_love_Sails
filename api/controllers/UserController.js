@@ -36,5 +36,43 @@ module.exports = {
         res.json(model);
       }
     });
+  },
+
+  reset: function(req, res){
+
+    res.view({
+        layout: 'auth-layout'
+    });
+
+  },
+
+  sendresetemail: function(req, res){
+    var email = req.param('email')
+
+    User.findOneByEmail(email, function(err, user){
+      if (err) { console.log(err) };
+
+      res.render('email/reset.ejs', {user: user}, function(err, list){
+
+        console.log("list: ", list);
+        Emailer.send({
+//          name:       user.firstName + ' ' + user.lastName,
+          name:       "mydearxym",
+          from:       sails.config.nodemailer.from,
+          to:         email,
+          subject:    'xym喊你重置密码',
+          messageHtml: list
+        }, function(err, response){
+          sails.log.debug('nodemailer sent', err, response);
+        });
+
+        res.send({todo: "send you a email already sent page"});
+//        res.redirect('/login');
+
+      });
+
+//      res.send({"found user": user});
+    });
   }
+
 };

@@ -45,9 +45,13 @@ module.exports.routes = {
     /**
      * User routes
      */
-    'get /api/user': 'UserController.getAll',
-    'get /api/user/:id': 'UserController.getOne',
-    'post /api/user': 'UserController.create',
+
+  'get /api/user/reset' : "UserController.reset",
+  'post /api/user/sendresetemail' : "UserController.sendresetemail",
+
+  'get /api/user': 'UserController.getAll',
+  'get /api/user/:id': 'UserController.getOne',
+  'post /api/user': 'UserController.create',
 
   /**
      * Message routes
