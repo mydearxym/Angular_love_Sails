@@ -9,6 +9,15 @@
         <% }) %>
     </div>
     <% } %>
+
+    <% if (infos.length > 0) {%>
+    <div class="alert alert-success" role="alert">
+        <% infos.forEach(function (info) { %>
+        <%= __(info) %>
+        <% }) %>
+    </div>
+    <% } %>
+
     <br>
     <form role="form" action="/auth/local" method="post">
         <div class="row">

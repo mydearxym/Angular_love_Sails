@@ -39,13 +39,7 @@ module.exports.routes = {
   'post /auth/local/:action': 'AuthController.callback',
 
 
-  'get /test/mail' : "MailerController.test",
-  // Custom routes here...
-
-    /**
-     * User routes
-     */
-
+  'get /api/user/:id/activate/:token': "UserController.activate",
   'get /api/user/reset' : "UserController.reset",
   'get /api/user/resetemail' : "UserController.resetEmail",
   'get /api/user/:id/resetemailcallback/:token' : "UserController.resetEmailCallback",

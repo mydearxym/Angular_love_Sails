@@ -79,7 +79,27 @@ exports.register = function (req, res, next) {
         });
       }
 
-      next(null, user);
+      res.render('email/activate.ejs', {user: user}, function(err, html){
+
+        Emailer.send({
+          name:       user.username,
+          from:       sails.config.nodemailer.from,
+          to:         user.email,
+          subject:    'XX设备云激活邮件',
+          messageHtml: html
+        }, function(err, response){
+          sails.log.debug('nodemailer sent', err, response);
+        });
+
+      });
+
+      res.view("user/registerOK.ejs", {
+        layout: "auth-layout",
+        username: username,
+        email: email
+      });
+
+//      next(null, user);
     });
   });
 };

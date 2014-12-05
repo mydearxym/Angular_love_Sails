@@ -26,7 +26,7 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>重置密码邮件</title>
+  <title>激活账户邮件</title>
   <style type="text/css">
 
     /***********
@@ -231,10 +231,11 @@ Email on Acid - http://www.emailonacid.com/blog/details/C18/doctype_-_the_black_
 
     <!-- End example table -->
       <!-- Yahoo Link color fix updated: Simply bring your link styling inline. -->
-      <h1>亲爱的 <%= user.email %></h1>
+      <h1>亲爱的 <%= user.username %></h1>
 
-      <h4>点击以下链接重设密码</h4>
-      <a href="http://localhost:1338/api/user/<%= user.id %>/resetemailcallback/<%= user.resetPassToken %>" target ="_blank" title="resetpassword for your account">http://localhost:1338/api/user/<%= user.id %>/resetemailcallback/<%= user.resetPassToken %></a>
+        <h4>请点击以下链接激活您的账户:</h4>
+        <a href="http://localhost:1338/api/user/<%= user.id %>/activate/<%= user.activationToken %>" target ="_blank" title="resetpassword for your account">http://localhost:1338/api/user/<%= user.id %>/activate/<%= user.activationToken %></a>
+
     </td>
   </tr>
   </table>

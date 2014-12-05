@@ -26,9 +26,12 @@ module.exports = {
       first_name: req.param('first_name')
     };
 
+    sails.log.info("UserCtrl create degian");
     User.create(model)
     .exec(function(err, model) {
-      if (err) {
+        sails.log.info("UserCtrl create done");
+
+        if (err) {
         return console.log(err);
       }
       else {
@@ -37,6 +40,39 @@ module.exports = {
       }
     });
   },
+
+  activate: function(req, res) {
+    var params = req.params.all();
+
+    sails.log.debug('activation action');
+
+//    res.send(params);
+
+    User.update({
+      id: params.id,
+      activationToken: params.token
+    },{
+      activated: true
+    }, function(err, user) {
+      if (err) {
+        sails.log.debug(err);
+        res.send(500, err);
+        // Updated users successfully!
+      } else {
+        sails.log.debug("User activated:", user);
+        // todo: redirect to active ok page
+        req.flash("info",  "Info.Activate.Ok");
+
+        res.view("auth/login.ejs", {
+          infos    : req.flash('info'),
+          errors   : req.flash("error"),
+          providers : {}
+        });
+      }
+    });
+
+  },
+
 
   reset: function(req, res){
 
@@ -55,10 +91,9 @@ module.exports = {
       res.render('email/resetpassword.ejs', {user: user}, function(err, html){
 
         Emailer.send({
-//          name:       user.firstName + ' ' + user.lastName,
-          name:       "mydearxym",
+          name:       user.username,
           from:       sails.config.nodemailer.from,
-          to:         email,
+          to:         user.email,
           subject:    'xym喊你重置密码',
           messageHtml: html
         }, function(err, response){
@@ -96,6 +131,7 @@ module.exports = {
   updatePassword: function(req, res) {
     var params = req.params.all();
 
+    // todo: remove findOne use User.update directly like activate
     User.findOne().where({id:params.userid, resetPassToken: params.resettoken}).populate("passports")
       .then(function(user) {
 
