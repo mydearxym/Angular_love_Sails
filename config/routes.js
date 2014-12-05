@@ -49,6 +49,8 @@ module.exports.routes = {
   'get /api/user/reset' : "UserController.reset",
   'get /api/user/resetemail' : "UserController.resetEmail",
   'get /api/user/:id/resetemailcallback/:token' : "UserController.resetEmailCallback",
+  'post /api/user/updatepassword': 'UserController.updatePassword',
+
 
   'get /api/user': 'UserController.getAll',
   'get /api/user/:id': 'UserController.getOne',

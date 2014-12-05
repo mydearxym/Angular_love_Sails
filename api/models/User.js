@@ -43,15 +43,15 @@ module.exports = {
     passports : { collection: 'Passport', via: 'user' }
   },
 
-  toJSON: function() {
-    var obj = this.toObject();
+//  toJSON: function() {
+//    var obj = this.toObject();
 
-    delete obj.activationToken;
-    delete obj.resetPassToken;
-    delete obj.activated;
+//    delete obj.activationToken;
+//    delete obj.resetPassToken;
+//    delete obj.activated;
 
-    return obj;
-  },
+//    return obj;
+//  },
 
   beforeCreate: function(user, cb) {
     user.activated = false;
