@@ -38,7 +38,6 @@ module.exports = {
 
     };
 
-    console.log("mailOptions: " , mailOptions);
     transport.sendMail(mailOptions, function(err, response){
       if(err) return cb(err);
       return cb(null, response);

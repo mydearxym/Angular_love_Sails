@@ -52,9 +52,8 @@ module.exports = {
     User.findOneByEmail(email, function(err, user){
       if (err) { console.log(err) };
 
-      res.render('email/reset.ejs', {user: user}, function(err, list){
+      res.render('email/resetpassword.ejs', {user: user}, function(err, list){
 
-        console.log("list: ", list);
         Emailer.send({
 //          name:       user.firstName + ' ' + user.lastName,
           name:       "mydearxym",
@@ -66,7 +65,12 @@ module.exports = {
           sails.log.debug('nodemailer sent', err, response);
         });
 
-        res.send({todo: "send you a email already sent page"});
+//        res.send({todo: "send you a email already sent page"});
+        res.view({
+          layout: "auth-layout",
+          email: email
+        });
+
 //        res.redirect('/login');
 
       });
@@ -85,18 +89,16 @@ module.exports = {
         console.log(err)
         // todo: replace the imgs from the 404.ejs
         res.render("404.ejs");
-      } else {
 
+      } else {
         res.view({
           layout: 'auth-layout',
           user: user
         });
-
       }
     });
 
-
   }
-
-
 };
+
+
