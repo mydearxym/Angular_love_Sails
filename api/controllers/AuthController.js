@@ -50,8 +50,9 @@ var AuthController = {
 
     // Render the `auth/login.ext` view
     res.view({
-      providers : providers
-    , errors    : req.flash('error')
+      providers : providers,
+      errors    : req.flash('error'),
+      infos     : {}
     });
   },
 

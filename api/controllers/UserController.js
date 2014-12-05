@@ -137,14 +137,26 @@ module.exports = {
 
         user.passports[_.findIndex(user.passports, {protocol: "local"})].password = params.newpassword;
 
-        User.update({id:user.id}, user).exec(function(err){
-          if (err) { sails.log.debug(err) };
+        user.resetPassToken = new Puid(true).generate();
 
+        sails.log.debug("before save user: ", user);
+
+        user.save(function(err){
+          sails.log.error("update password: ", err);
           res.view("user/resetPasswordOK.ejs", {
             layout: "auth-layout",
             user: user
           });
         });
+
+//        User.update({id:user.id}, user).exec(function(err){
+//          if (err) { sails.log.debug(err) };
+//
+//          res.view("user/resetPasswordOK.ejs", {
+//            layout: "auth-layout",
+//            user: user
+//          });
+//        });
       });
 
   }
