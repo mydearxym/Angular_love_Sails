@@ -76,7 +76,6 @@ module.exports = {
 
   resetEmailCallback: function(req, res) {
     var params = req.params.all();
-//    sails.log.debug("resetpassword action params: ", params);
 
     User.findOne().where({id:params.id, resetPassToken: params.token})
       .then(function(user){
@@ -92,22 +91,6 @@ module.exports = {
       .catch(function(err){
         res.render("404.ejs");
       });
-
-//    User.findOne({id: params.id}).exec(function(err, user){
-//      console.log("findOne user: ", user);
-//      if (err || _.isUndefined(user)) {
-//        console.log(err)
-//        // todo: replace the imgs from the 404.ejs
-//        res.render("404.ejs");
-//
-//      } else {
-//        res.view({
-//          layout: 'auth-layout',
-//          user: user
-//        });
-//      }
-//    });
-
   },
 
   updatePassword: function(req, res) {
