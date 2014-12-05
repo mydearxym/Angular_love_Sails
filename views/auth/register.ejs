@@ -1,57 +1,102 @@
 
 
 <div class="container">
-    <h3 class="">注册页面</h3>
+    <h3 class="">欢迎注册XX设备云</h3>
 
-    <div class="text-danger">
-        <% if (errors) {%>
+    <% if (errors.length > 0) {%>
+    <div class="alert alert-danger" role="alert">
         <% errors.forEach(function (error) { %>
         <%= __(error) %>
         <% }) %>
-        <% } %>
     </div>
+    <% } %>
 
-    <form class="form-horizontal" role="form" action="/auth/local/register" method="post">
-      <div class="form-group">
-        <label for="inputUsername3" class="col-sm-2 control-label">用户名</label>
-        <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputUsername3" name="username" placeholder="Username" value="">
+    <form role="form" action="/auth/local/register" method="post">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1">用户名:</label>
+                <input type="text" class="form-control"  name="username" >
+                <!--<input type="text" class="form-control"  name="username" placeholder="用户名">-->
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <label for="inputPassword3" class="col-sm-2 control-label">用户密码</label>
-        <div class="col-sm-5">
-          <input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" value="">
+
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1">密码:</label>
+                <!--<input type="password" class="form-control" name="password" placeholder="请输入密码">-->
+                <input type="password" class="form-control" name="password" >
+            </div>
         </div>
-      </div>
 
-      <div class="form-group">
-          <label for="inputPassword3" class="col-sm-2 control-label">密码确认</label>
-          <div class="col-sm-5">
-              <input type="password" class="form-control" id="inputPassword3" name="passwordcomfirm" placeholder="Password" value="">
-          </div>
-      </div>
-
-      <div class="form-group">
-        <label for="inputEmail3" class="col-sm-2 control-label">电子邮件</label>
-        <div class="col-sm-5">
-          <input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email" value="">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1">密码确认:</label>
+                <!--<input type="password" class="form-control" name="passwordcomfirm" placeholder="密码确认">-->
+                <input type="password" class="form-control" name="passwordcomfirm" >
+            </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <label for="inputFirstName3" class="col-sm-2 control-label">First Name</label>
-        <div class="col-sm-5">
-          <input type="text" class="form-control" id="inputFirstName3" name="firstname" placeholder="First Name" value="">
+        <div class="row">
+            <div class="form-group col-md-4">
+                <label for="exampleInputEmail1">邮件地址:</label>
+                <!--<input type="email" class="form-control" name="email" placeholder="电子邮件地址">-->
+                <input type="email" class="form-control" name="email">
+            </div>
         </div>
-      </div>
 
-      <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <button type="submit" class="btn btn-success btn-sm">注册一个</button>
-            <a href="/home" class="btn btn-default btn-sm">回首页 →</a>
+        <div class="form-group col-md-4">
+            <div class="pull-right">
+                <button type="submit" class="btn btn-success btn-sm">注册一个</button>
+                <a href="/home" class="btn btn-default">回首页 →</a>
+            </div>
         </div>
-      </div>
-
     </form>
+
+
+
+
+
+
+
+
+    <!--<form class="form-horizontal" role="form" action="/auth/local/register" method="post">-->
+      <!--<div class="form-group">-->
+        <!--<label for="inputUsername3" class="col-sm-2 control-label">用户名</label>-->
+        <!--<div class="col-sm-5">-->
+          <!--<input type="text" class="form-control" id="inputUsername3" name="username" placeholder="Username" value="">-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="form-group">-->
+        <!--<label for="inputPassword3" class="col-sm-2 control-label">用户密码</label>-->
+        <!--<div class="col-sm-5">-->
+          <!--<input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password" value="">-->
+        <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="form-group">-->
+          <!--<label for="inputPassword3" class="col-sm-2 control-label">密码确认</label>-->
+          <!--<div class="col-sm-5">-->
+              <!--<input type="password" class="form-control" id="inputPassword3" name="passwordcomfirm" placeholder="Password" value="">-->
+          <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="form-group">-->
+        <!--<label for="inputEmail3" class="col-sm-2 control-label">电子邮件</label>-->
+        <!--<div class="col-sm-5">-->
+          <!--<input type="email" class="form-control" id="inputEmail3" name="email" placeholder="Email" value="">-->
+        <!--</div>-->
+      <!--</div>-->
+
+
+      <!--<div class="form-group">-->
+        <!--<div class="col-sm-offset-2 col-sm-10">-->
+            <!--<button type="submit" class="btn btn-success btn-sm">注册一个</button>-->
+            <!--<a href="/home" class="btn btn-default btn-sm">回首页 →</a>-->
+        <!--</div>-->
+      <!--</div>-->
+
+    <!--</form>-->
+
+
+
 </div>

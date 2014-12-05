@@ -25,7 +25,7 @@ module.exports = {
       type: 'string'
     },
 
-    firstname: {
+    nickname: {
       type: 'string'
 //      required: true
     },

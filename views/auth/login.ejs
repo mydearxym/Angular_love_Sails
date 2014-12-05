@@ -1,7 +1,7 @@
 
 
 <div class="container">
-    <h3>欢迎来到 rsmonitor</h3>
+    <h3>欢迎登陆XX设备云</h3>
     <% if (errors.length > 0) {%>
     <div class="alert alert-danger" role="alert">
         <% errors.forEach(function (error) { %>
@@ -21,7 +21,7 @@
         <div class="row">
             <div class="form-group col-md-4">
                 <label for="exampleInputEmail1">密码:</label>
-                <input type="password" class="form-control" name="password" placeholder="Enter email">
+                <input type="password" class="form-control" name="password" placeholder="">
                 <a href="/api/user/reset" class="pull-right">忘记密码?</a>
             </div>
         </div>
@@ -35,30 +35,6 @@
     </form>
 
 
-    <!--<form class="form-horizontal" role="form" action="/auth/local" method="post">-->
-      <!--<div class="form-group">-->
-        <!--<label for="inputUsername3" class="col-sm-2 control-label">用户名</label>-->
-        <!--<div class="col-sm-5">-->
-          <!--<input type="text" class="form-control" id="inputUsername3" name="identifier" placeholder="username or Email">-->
-          <!--&lt;!&ndash;<input type="text" class="form-control" id="inputUsername3" name="user[identifier]" placeholder="Username">&ndash;&gt;-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="form-group">-->
-        <!--<label for="inputPassword3" class="col-sm-2 control-label">密码</label>-->
-        <!--<div class="col-sm-5">-->
-          <!--&lt;!&ndash;<input type="password" class="form-control" id="inputPassword3" name="user[password]" placeholder="Password">&ndash;&gt;-->
-          <!--<input type="password" class="form-control" id="inputPassword3" name="password" placeholder="Password">-->
-        <!--</div>-->
-      <!--</div>-->
-
-      <!--<div class="form-group">-->
-        <!--<div class="col-sm-offset-2 col-sm-10">-->
-            <!--<button type="submit" class="btn btn-success">登陆</button>-->
-            <!--<a href="/home" class="btn btn-default">回首页 →</a>-->
-        <!--</div>-->
-      <!--</div>-->
-
-    <!--</form>-->
     <br>
     <br>
     <h4>第三方登陆：</h4>
