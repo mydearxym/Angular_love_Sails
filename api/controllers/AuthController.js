@@ -54,6 +54,7 @@ var AuthController = {
       errors    : req.flash('error'),
       infos     : {}
     });
+
   },
 
   /**
@@ -72,7 +73,7 @@ var AuthController = {
    */
   logout: function (req, res) {
     req.logout();
-    console.log("logout to home");
+    sails.log.info("user logout");
     res.redirect('/home');
   },
 
@@ -128,14 +129,13 @@ var AuthController = {
       // If an error was thrown, redirect the user to the login which should
       // take care of rendering the error messages.
       req.flash('form', req.body);
-      console.log("callback redirect to: ", req.param("action"));
+      sails.log.info("callback tryAgain redirect to: ", req.param("action"));
       res.redirect(req.param('action') === 'register' ? '/register' : '/login');
     }
 
     passport.callback(req, res, function (err, user) {
-      console.log("passport.callback");
       if (err){
-        console.log("passport.callback.err: " + err);
+        sails.log.error("passport.callback.err: " + err);
         return tryAgain();
       }
 
@@ -144,7 +144,8 @@ var AuthController = {
 
         // Upon successful login, send the user to the homepage were req.user
         // will available.
-        console.log("passport callback redirect to home");
+        sails.log.info("passport callback login redirect to home");
+
         res.redirect('/home');
       });
     });

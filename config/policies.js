@@ -16,9 +16,30 @@ module.exports.policies = {
 
   // Default policy for all controllers and actions
   // (`true` allows public access) 
-  '*': true,
 
-  '*': [ 'passport' ]
+  '*': true,
+//  '*': [ 'passport' ]
+
+  'auth': {
+//    'login': true,
+    "*": true
+  },
+
+  'home' : {
+    "*" : 'authenticated'
+  },
+
+  'user' : {
+    'create': true,
+    'activate': true,
+    'reset': true,
+    'resetEmail': true,
+    'resetEmailCallback': true,
+    'updatePassword': true,
+    "*": 'authenticated'
+  }
+
+
 //  '*': [ 'passport', 'sessionAuth' ]
 
   /*

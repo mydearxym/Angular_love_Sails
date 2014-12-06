@@ -139,7 +139,7 @@ module.exports = {
 
         user.resetPassToken = new Puid(true).generate();
 
-        sails.log.debug("before save user: ", user);
+//        sails.log.debug("before save user: ", user);
 
         user.save(function(err){
           sails.log.error("update password: ", err);

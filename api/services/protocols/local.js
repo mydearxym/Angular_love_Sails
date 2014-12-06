@@ -194,6 +194,7 @@ exports.login = function (req, identifier, password, next) {
             req.flash('error', 'Error.Passport.Password.Wrong');
             return next(null, false);
           } else {
+            sails.log.debug("passport say user can login");
             return next(null, user);
           }
         });

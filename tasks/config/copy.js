@@ -15,26 +15,38 @@
  */
 module.exports = function(grunt) {
 
-	var filesToCopy = require('../pipeline').jsFilesToInjectNoPathChange;
+  var filesToCopy = require('../pipeline').jsFilesToInjectNoPathChange;
+  var fontfilesToCopy = require('../pipeline').fontFilesToInjectNoPathChange;
 
-	grunt.config.set('copy', {
-		dev: {
-			files: [{
-				expand: true,
-				cwd: './assets',
-				src: filesToCopy,
-				dest: '.tmp/public'
-			}]
-		},
-		build: {
-			files: [{
-				expand: true,
-				cwd: '.tmp/public',
-				src: ['**/*'],
-				dest: 'www'
-			}]
-		}
-	});
+  grunt.config.set('copy', {
+    dev: {
+      files: [
+        {
+          expand: true,
+          cwd: './assets',
+          src: filesToCopy,
+          dest: '.tmp/public'
+        },
 
-	grunt.loadNpmTasks('grunt-contrib-copy');
+        {
+          expand: true,
+          cwd: './assets',
+          src: fontfilesToCopy,
+          dest: '.tmp/public'
+        }
+
+      ]
+
+    },
+    build: {
+      files: [{
+        expand: true,
+        cwd: '.tmp/public',
+        src: ['**/*'],
+        dest: 'www'
+      }]
+    }
+  });
+
+  grunt.loadNpmTasks('grunt-contrib-copy');
 };

@@ -43,11 +43,17 @@ var jsFilesToInject = [
   // *->    you might put other dependencies like jQuery or Angular here   <-*
   //
 
+
   // All of the rest of your app scripts
   'src/**/*.js'
 ];
 
+var fontFilesToInject = [
+  "fonts/**/*"
+];
+
 module.exports.jsFilesToInjectNoPathChange = jsFilesToInject;
+module.exports.fontFilesToInjectNoPathChange = fontFilesToInject;
 
 
 // Client-side HTML templates are injected using the sources below
@@ -72,6 +78,9 @@ module.exports.cssFilesToInject = cssFilesToInject.map(function(path) {
   return '.tmp/public/' + path;
 });
 module.exports.jsFilesToInject = jsFilesToInject.map(function(path) {
+  return '.tmp/public/' + path;
+});
+module.exports.fontFilesToInject = fontFilesToInject.map(function(path) {
   return '.tmp/public/' + path;
 });
 module.exports.templateFilesToInject = templateFilesToInject.map(function(path) {

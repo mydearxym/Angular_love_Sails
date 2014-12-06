@@ -5,8 +5,8 @@ angular.module( 'sailng.header', [
     $scope.currentUser = config.currentUser;
 
     var navItems = [
-        {title: 'Messages', translationKey: 'navigation:messages', url: '/messages', cssClass: 'fa fa-comments'},
-        {title: 'About', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-info-circle'}
+        {title: ' Messages', translationKey: 'navigation:messages', url: '/messages', cssClass: 'fa fa-comments'},
+        {title: ' About', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-clipboard'}
     ];
 
     if (!$scope.currentUser) {
