@@ -8,10 +8,11 @@ angular.module( 'sailng', [
   'services',
   'models',
 
-  'sailng.header',
-  'sailng.home',
-  'sailng.about',
-  'sailng.messages'
+  'monitorCloud.header',
+  'monitorCloud.home',
+  'monitorCloud.about',
+  'monitorCloud.users',
+  'monitorCloud.messages'
 ])
 
 .config( function myAppConfig ( $stateProvider, $urlRouterProvider, $locationProvider ) {

@@ -1,4 +1,4 @@
-angular.module( 'sailng.messages', [
+angular.module( 'monitorCloud.messages', [
 ])
 
 .config(function config( $stateProvider ) {

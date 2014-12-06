@@ -1,12 +1,13 @@
-angular.module( 'sailng.header', [
+angular.module( 'monitorCloud.header', [
 ])
 
 .controller( 'HeaderCtrl', function HeaderController( $scope, $state, config ) {
     $scope.currentUser = config.currentUser;
 
     var navItems = [
-        {title: ' Messages', translationKey: 'navigation:messages', url: '/messages', cssClass: 'fa fa-comments'},
-        {title: ' About', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-clipboard'}
+        {title: ' 实时聊天', translationKey: 'navigation:messages', url: '/messages', cssClass: 'fa fa-comments'},
+        {title: ' 协议编辑', translationKey: 'navigation:about', url:'/about',cssClass: 'fa fa-clipboard'},
+        {title: ' 用户管理', translationKey: 'navigation:users', url:'/users',cssClass: 'fa fa-user'}
     ];
 
     if (!$scope.currentUser) {

@@ -1,4 +1,4 @@
-angular.module( 'sailng.home', [
+angular.module( 'monitorCloud.home', [
 ])
 
 .config(function config( $stateProvider ) {
