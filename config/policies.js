@@ -18,10 +18,8 @@ module.exports.policies = {
   // (`true` allows public access) 
 
   '*': true,
-//  '*': [ 'passport' ]
 
   'auth': {
-//    'login': true,
     "*": true
   },
 
@@ -36,6 +34,7 @@ module.exports.policies = {
     'resetEmail': true,
     'resetEmailCallback': true,
     'updatePassword': true,
+    'getRoles': true,
     "*": 'authenticated'
   }
 

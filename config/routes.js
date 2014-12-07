@@ -31,6 +31,7 @@ module.exports.routes = {
     action: 'index'
   },
 
+
   'get /login': 'AuthController.login',
   'get /logout': 'AuthController.logout',
   'get /register': 'AuthController.register',
@@ -38,6 +39,7 @@ module.exports.routes = {
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',
 
+  'get /api/user/roles': 'UserController.getRoles',
 
   'get /api/user/:id/activate/:token': "UserController.activate",
   'get /api/user/reset' : "UserController.reset",
@@ -64,8 +66,11 @@ module.exports.routes = {
   // against Sails route blueprints.  See `config/blueprints.js` for configuration options
   // and examples.
 
+
+//  in case angular page refresh by user
   'get /home': 'HomeController.index',
   'get /about': 'HomeController.index',
+  'get /users': 'HomeController.index',
   'get /messages': 'HomeController.index'
 
 };

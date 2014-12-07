@@ -36,6 +36,7 @@ var jsFilesToInject = [
   'bower_components/moment/moment.js',
   'bower_components/moment/lang/zh-cn.js',
   'bower_components/angular-moment/angular-moment.js',
+  'bower_components/angular-xeditable/dist/js/xeditable.min.js',
   'bower_components/angular-translate/angular-translate.js',
   'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
 

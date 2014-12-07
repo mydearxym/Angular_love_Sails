@@ -10,13 +10,14 @@
     "angular-ui-utils": "~0.1.1",
     "socket.io-client": "0.9.16",
     "sails.io.js": "0.10.0-rc4",
-    "angular-sails": "1.0.2",
+    "angular-sails": "1.0.4",
     "lodash": "~2.4.1",
     "angular-moment": "~0.6.2",
     "angular-translate": "~2.1.0",
     "angular-translate-loader-static-files": "~2.1.0"
   },
   "dependencies": {
-    "angular": "1.2.26"
+    "angular": "1.2.26",
+    "angular-xeditable": "~0.1.8"
   }
 }

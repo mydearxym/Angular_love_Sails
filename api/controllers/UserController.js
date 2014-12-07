@@ -19,6 +19,11 @@ module.exports = {
     });
   },
 
+  getRoles: function(req,res) {
+
+    res.ok({data: ['admin', 'normal', 'guest']});
+  },
+
   create: function (req, res) {
     var model = {
       username: req.param('username'),

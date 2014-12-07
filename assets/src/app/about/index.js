@@ -13,6 +13,6 @@ angular.module( 'monitorCloud.about', [
   });
 })
 
-.controller( 'AboutCtrl', function AboutController( $scope, titleService ) {
-  titleService.setTitle('About');
-});
+  .controller( 'AboutCtrl', function AboutController( $scope, titleService ) {
+    titleService.setTitle('About');
+  });
