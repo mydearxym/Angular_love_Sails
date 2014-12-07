@@ -1,4 +1,4 @@
-angular.module( 'sailng', [
+angular.module( 'monitorCloud', [
   'ui.router',
   'ngSails',
   'angularMoment',

@@ -1,22 +1,36 @@
+
+
 <h2>Messages</h2>
 
-
-<p ng-show="!currentUser"><a href="/register">Register</a> to post a message!</p>
+<p ng-show="!MessagesCtrl.currentUser"><a href="/register">Register</a> to post a message!</p>
 
 <div class="row">
   <div class="col-md-6">
-    <form role="form" ng-submit="createMessage(newMessage)">
+    <form role="form" ng-submit="MessagesCtrl.createMessage(MessagesCtrl.newMessage)">
       <div class="form-group">
-      <label for="messageTitle">说点什么吧</label>
-        <input type="text" ng-model="newMessage.title" class="form-control" id="messageTitle" ng-disabled="!currentUser">
+        <label>说点什么吧</label>
+        <input type="text" class="form-control"
+               ng-model="MessagesCtrl.newMessage.title"
+               ng-disabled="!MessagesCtrl.currentUser">
       </div>
-      <button type="submit" class="btn btn-primary" ng-disabled="!currentUser || !newMessage.title">Submit</button>
+      <button type="submit" class="btn btn-primary"
+              ng-disabled="!MessagesCtrl.currentUser || !MessagesCtrl.newMessage.title">
+        发&nbsp;&nbsp;送
+        </button>
     </form>
   </div>
   <div class="col-md-6">
     <h3>当前消息</h3>
     <ul>
-      <li ng-repeat="message in messages">{{message.title}} <b>by</b> {{message.user.username}}, <span am-time-ago="message.updatedAt"></span> <button type="button" class="btn btn-danger btn-xs" ng-click="destroyMessage(message)" ng-show="currentUser.id === message.user.id"><i class="fa fa-trash-o"></i></button></li>
-    </ul>
+      <li ng-repeat="message in MessagesCtrl.messages">
+          {{message.title}} <mark>by</mark> {{message.user.username}},
+        <span am-time-ago="message.updatedAt"></span>
+        <button type="button" class="btn btn-danger btn-xs"
+                ng-click="MessagesCtrl.destroyMessage(message)"
+                ng-show="MessagesCtrl.currentUser.id === message.user.id">
+          <i class="fa fa-trash-o"></i>
+        </button>
+      </li>
+      </ul>
   </div>
 </div>

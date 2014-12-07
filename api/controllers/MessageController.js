@@ -1,4 +1,3 @@
-var _ = require('lodash');
 
 module.exports = {
   getAll: function(req, res) {
@@ -31,7 +30,7 @@ module.exports = {
       title: req.param('title'),
       user: userId
     };
-
+    console.log("sails create message: ", model);
     Message.create(model)
     .exec(function(err, message) {
       if (err) {

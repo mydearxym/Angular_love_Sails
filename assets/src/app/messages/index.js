@@ -6,47 +6,53 @@ angular.module( 'monitorCloud.messages', [
     url: '/messages',
     views: {
       "main": {
-        controller: 'MessagesCtrl',
+        controller: 'MessagesController as MessagesCtrl',
         templateUrl: 'messages/index.tpl.html'
       }
     }
   });
 })
 
-.controller( 'MessagesCtrl', function MessagesController( $scope, $sails, lodash, config, titleService, MessageModel ) {
-  titleService.setTitle('Messages');
-  $scope.newMessage = {};
-  $scope.messages = [];
-  $scope.currentUser = config.currentUser;
+//  todo: rename xxService to xxHelper
+.controller( 'MessagesController', function($sails, config, titleService, MessageModel ) {
+    titleService.setTitle('Messages');
+    var self = this;
 
-  $sails.on('message', function (envelope) {
-    switch(envelope.verb) {
-      case 'created':
-        $scope.messages.unshift(envelope.data);
-        break;
-      case 'destroyed':
-        lodash.remove($scope.messages, {id: envelope.id});
-        break;
-    }
-  });
+    self.newMessage = {};
+    self.messages = [];
+    self.currentUser = config.currentUser;
 
-  $scope.destroyMessage = function(message) {
-    // check here if this message belongs to the currentUser
-    if (message.user.id === config.currentUser.id) {
-      MessageModel.delete(message).then(function(model) {
-        // message has been deleted, and removed from $scope.messages
-      });
-    }
-  };
-
-  $scope.createMessage = function(newMessage) {
-    newMessage.user = config.currentUser.id;
-    MessageModel.create(newMessage).then(function(model) {
-      $scope.newMessage = {};
+    $sails.on('message', function (envelope) {
+      switch(envelope.verb) {
+        case 'created':
+          self.messages.unshift(envelope.data);
+          break;
+        case 'destroyed':
+          _.remove(self.messages, {id: envelope.id});
+          break;
+      }
     });
-  };
 
-  MessageModel.getAll($scope).then(function(models) {
-    $scope.messages = models;
+    self.destroyMessage = function(message) {
+      // check here if this message belongs to the currentUser
+      console.log("destroyMessage");
+      if (message.user.id === config.currentUser.id) {
+        MessageModel.delete(message).then(function(model) {
+          // message has been deleted, and removed from $scope.messages
+        });
+      }
+    };
+
+    self.createMessage = function(newMessage) {
+      console.log("createMessage");
+      newMessage.user = config.currentUser.id;
+      MessageModel.create(newMessage).then(function(model) {
+        self.newMessage = {};
+      });
+    };
+
+    MessageModel.getAll().then(function(models) {
+      console.log("getAll msg", models);
+      self.messages = models;
+    });
   });
-});
