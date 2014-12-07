@@ -34,7 +34,7 @@ var jsFilesToInject = [
   'bower_components/angular-sails/dist/angular-sails.js',
   'bower_components/lodash/dist/lodash.js',
   'bower_components/moment/moment.js',
-  'bower_components/moment/lang/zh-cn.js',
+  'bower_components/moment/locale/zh-cn.js',
   'bower_components/angular-moment/angular-moment.js',
   'bower_components/angular-xeditable/dist/js/xeditable.min.js',
   'bower_components/angular-translate/angular-translate.js',
