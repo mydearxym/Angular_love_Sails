@@ -11,8 +11,8 @@ angular.module( 'monitorCloud.header', [
     ];
 
     if (!$scope.currentUser) {
-        navItems.push({title: 'Register', translationKey: 'navigation:register', url: '/register', cssClass: 'register'});
         navItems.push({title: 'Login', translationKey: 'navigation:login', url: '/login', cssClass: 'login'});
+        navItems.push({title: 'Register', translationKey: 'navigation:register', url: '/register', cssClass: 'register'});
     }
 
     $scope.navItems = navItems;

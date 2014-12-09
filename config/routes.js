@@ -26,15 +26,15 @@ module.exports.routes = {
   // default view engine) your home page.
   // 
   // (Alternatively, remove this and add an `index.html` file in your `assets` directory)
-  'get /': {
+  'get /home': {
     controller: 'HomeController',
     action: 'index'
   },
 
 
-  'get /login': 'AuthController.login',
-  'get /logout': 'AuthController.logout',
-  'get /register': 'AuthController.register',
+//  'get /login': 'AuthController.login',
+//  'get /logout': 'AuthController.logout',
+//  'get /register': 'AuthController.register',
 
   'post /auth/local': 'AuthController.callback',
   'post /auth/local/:action': 'AuthController.callback',

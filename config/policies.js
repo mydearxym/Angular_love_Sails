@@ -19,24 +19,24 @@ module.exports.policies = {
 
   '*': true,
 
-  'auth': {
-    "*": true
-  },
-
-  'home' : {
-    "*" : 'authenticated'
-  },
-
-  'user' : {
-    'create': true,
-    'activate': true,
-    'reset': true,
-    'resetEmail': true,
-    'resetEmailCallback': true,
-    'updatePassword': true,
-    'getRoles': true,
-    "*": 'authenticated'
-  }
+//  'auth': {
+//    "*": true
+//  },
+//
+//  'home' : {
+//    "*" : 'authenticated'
+//  },
+//
+//  'user' : {
+//    'create': true,
+//    'activate': true,
+//    'reset': true,
+//    'resetEmail': true,
+//    'resetEmailCallback': true,
+//    'updatePassword': true,
+//    'getRoles': true,
+//    "*": 'authenticated'
+//  }
 
 
 //  '*': [ 'passport', 'sessionAuth' ]

@@ -8,6 +8,9 @@ angular.module( 'monitorCloud', [
   'services',
   'models',
 
+  'monitorCloud.login',
+  'monitorCloud.register',
+
   'monitorCloud.header',
   'monitorCloud.home',
   'monitorCloud.about',

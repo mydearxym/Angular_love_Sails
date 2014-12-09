@@ -136,6 +136,7 @@ var AuthController = {
     passport.callback(req, res, function (err, user) {
       if (err){
         sails.log.error("passport.callback.err: " + err);
+
         return tryAgain();
       }
 

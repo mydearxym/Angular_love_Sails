@@ -2,15 +2,15 @@ var Bcrypt = require('bcrypt'),
     Crypto = require('crypto');
 
 module.exports = {
-	
-	/**
-	 * Generate a bcrypt hash from input
-	 * @param  {object}   options            object of options
-	 * @param  {string}   input              the input to be hashed
-	 * @param  {Function} cb[err, hash]      the callback to call when hashing is finished
-	 */
+
+  /**
+   * Generate a bcrypt hash from input
+   * @param  {object}   options            object of options
+   * @param  {string}   input              the input to be hashed
+   * @param  {Function} cb[err, hash]      the callback to call when hashing is finished
+   */
   generate: function(options, input, cb){
-  	var saltComplexity = options.saltComplexity || 10;
+    var saltComplexity = options.saltComplexity || 10;
     Bcrypt.genSalt(saltComplexity, function(err, salt) {
       Bcrypt.hash(input, salt, function(err, hash) {
         if(err) return cb(err);
@@ -27,8 +27,8 @@ module.exports = {
    * @param  {Function} cb[boolean]    the callback to call when comparision is done
    */
   compare: function(input, hash, cb){
-  	Bcrypt.compare(input, hash, function(err, res) {
-  		return cb(res);
+    Bcrypt.compare(input, hash, function(err, res) {
+      return cb(res);
     });
   },
   /**

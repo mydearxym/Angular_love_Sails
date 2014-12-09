@@ -36,7 +36,8 @@
     "passport-facebook": "~1.0.3",
     "passport-google": "~0.3.0",
     "nodemailer": "~0.7.1",
-    "mails": "0.0.8"
+    "mails": "0.0.8",
+    "jsonwebtoken": "~1.2.0"
   },
   "scripts": {
     "start": "node app.js",
