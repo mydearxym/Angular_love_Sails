@@ -13,6 +13,9 @@ module.exports = {
       unique: true
     },
 
+    password: {
+      type: "string"
+    },
     activated: {
       type: 'boolean',
       defaultsTo: false
@@ -40,25 +43,37 @@ module.exports = {
       collection: 'message',
       via: 'user'
     },
-    passports : { collection: 'Passport', via: 'user' }
+
+    passports : { collection: 'Passport', via: 'user' },
+
+    toJSON: function() {
+      var obj = this.toObject();
+
+      delete obj.password;
+      delete obj.activationToken;
+      delete obj.resetPassToken;
+      delete obj.updatedAt;
+      delete obj.createdAt;
+
+      return obj;
+    }
+
   },
 
-//  toJSON: function() {
-//    var obj = this.toObject();
+  beforeCreate: function(user, next) {
+    sails.log.debug("User before created: ", user);
 
-//    delete obj.activationToken;
-//    delete obj.resetPassToken;
-//    delete obj.activated;
-
-//    return obj;
-//  },
-
-  beforeCreate: function(user, cb) {
-    user.activated = false;
-    user.activationToken = crypto.token(new Date().getTime()+user.email);
-    user.resetPassToken = crypto.token(new Date().getMilliseconds()+user.email);
-
-    return cb(null, user);
+    bcrypt.genSalt(10, function(err, salt) {
+      if (err) return next(err);
+      bcrypt.hash(user.password, salt, function(err, hash) {
+        if (err) return next(err);
+        user.password = hash;
+        user.activated = false;
+        user.activationToken = crypto.token(new Date().getTime()+user.email);
+        user.resetPassToken = crypto.token(new Date().getMilliseconds()+user.email);
+        next();
+      });
+    });
   },
 
   getAll: function() {

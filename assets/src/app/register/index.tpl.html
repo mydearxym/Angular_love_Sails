@@ -1,2 +1,56 @@
-<h1>register Sailng</h1>
+
+<div class="container">
+  <h3>欢迎<mark>注册</mark>XX设备云~</h3>
+
+  <br>
+  <!--<form role="form" action="/auth/login" method="post">-->
+  <form role="form">
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label>用户名:</label>
+        <input type="text" class="form-control"
+               name="identifier"
+               placeholder="用户名 或 注册邮件"
+               ng-model="RegisterCtrl.user.username">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label>电子邮件:</label>
+        <input type="email" class="form-control"
+               name="identifier"
+               placeholder="用户名 或 注册邮件"
+               ng-model="RegisterCtrl.user.email">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-group col-md-4">
+        <label>密码:</label>
+        <input type="password"
+               class="form-control"
+               name="password"
+               placeholder=""
+               ng-model="RegisterCtrl.user.password">
+
+        <!--<a href="/reset" class="pull-right">| 忘记密码了?</a>-->
+        <!--<a href="/register" class="pull-right">注册用户&nbsp;</a>-->
+      </div>
+    </div>
+
+    <div class="form-group col-md-4">
+      <div class="pull-right">
+        <button class="btn btn-success" ng-click="RegisterCtrl.register()">注册</button>
+        <a href="/home" class="btn btn-default">回首页 →</a>
+      </div>
+    </div>
+  </form>
+
+
+</div>
+
+
+
+
 
