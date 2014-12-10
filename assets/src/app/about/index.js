@@ -8,6 +8,10 @@ angular.module( 'monitorCloud.about', [
       "main": {
         controller: 'AboutCtrl',
         templateUrl: 'about/index.tpl.html'
+      },
+      'navbar': {
+        controller: "HeaderCtrl",
+        templateUrl: 'header/index.tpl.html'
       }
     }
   });
@@ -16,3 +20,4 @@ angular.module( 'monitorCloud.about', [
   .controller( 'AboutCtrl', function AboutController( $scope, titleService ) {
     titleService.setTitle('About');
   });
+

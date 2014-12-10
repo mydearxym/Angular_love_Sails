@@ -2,6 +2,11 @@
 <div class="container">
   <h3>欢迎<mark>注册</mark>XX设备云~</h3>
 
+  <div class="alert alert-danger"
+       ng-repeat="error in RegisterCtrl.errors">
+    {{error}}
+  </div>
+
   <br>
   <!--<form role="form" action="/auth/login" method="post">-->
   <form role="form">

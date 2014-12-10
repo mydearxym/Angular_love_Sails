@@ -14,6 +14,11 @@ angular.module( 'monitorCloud.users', [
       "main": {
         controller: 'UsersController',
         templateUrl: 'users/index.tpl.html'
+      },
+
+      'navbar': {
+        controller: "HeaderCtrl",
+        templateUrl: 'header/index.tpl.html'
       }
     }
   });
@@ -121,6 +126,5 @@ angular.module( 'monitorCloud.users', [
       console.log("");
 //      self.users.splice(index, 1);
     };
-
 
   });

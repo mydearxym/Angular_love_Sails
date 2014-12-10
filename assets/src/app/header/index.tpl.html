@@ -8,7 +8,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/home">祥云一号</a>
+          <a class="navbar-brand" href="/home">棚云一号</a>
         </div>
         <div class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -24,7 +24,7 @@
                         <i class="fa fa-envelope text-info"></i> {{currentUser.email}}    <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="/logout"><i class="fa fa-share"></i> Logout</a></li>
+                        <li><a><i class="fa fa-share"></i><span ng-click="logout()">Logout</span></a></li>
                     </ul>
                 </div>
             </li>

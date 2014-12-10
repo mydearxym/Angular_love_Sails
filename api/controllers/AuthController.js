@@ -35,7 +35,7 @@ var AuthController = {
           return;
         }
         if (user) {
-
+//          res.json({msg: "error happend"});
           res.json({user: user.toJSON(), token: sailsTokenAuth.generateToken({sid: user.id})});
         }
     })

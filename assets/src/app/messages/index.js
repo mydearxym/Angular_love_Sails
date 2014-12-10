@@ -8,6 +8,10 @@ angular.module( 'monitorCloud.messages', [
       "main": {
         controller: 'MessagesController as MessagesCtrl',
         templateUrl: 'messages/index.tpl.html'
+      },
+      'navbar': {
+        controller: "HeaderCtrl",
+        templateUrl: 'header/index.tpl.html'
       }
     }
   });
@@ -55,4 +59,5 @@ angular.module( 'monitorCloud.messages', [
       console.log("getAll msg", models);
       self.messages = models;
     });
-  });
+  })
+
