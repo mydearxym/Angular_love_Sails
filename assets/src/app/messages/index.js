@@ -1,5 +1,4 @@
-angular.module( 'monitorCloud.messages', [
-])
+angular.module( 'monitorCloud.messages', [])
 
 .config(function config( $stateProvider ) {
   $stateProvider.state( 'messages', {
@@ -12,6 +11,12 @@ angular.module( 'monitorCloud.messages', [
       'navbar': {
         controller: "HeaderCtrl",
         templateUrl: 'header/index.tpl.html'
+      }
+    },
+
+    data: {
+      permissions: {
+        only: ['admin']
       }
     }
   });

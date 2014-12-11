@@ -38,7 +38,8 @@ var jsFilesToInject = [
   'bower_components/angular-moment/angular-moment.js',
   'bower_components/angular-local-storage/dist/angular-local-storage.min.js',
   'bower_components/angular-w5c-validator/w5cValidator.min.js',
-
+  'bower_components/angular-permission/dist/angular-permission.js',
+  'bower_components/angular-notify/dist/angular-notify.min.js',
   'bower_components/angular-xeditable/dist/js/xeditable.min.js',
   'bower_components/angular-translate/angular-translate.js',
   'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',

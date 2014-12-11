@@ -8,16 +8,22 @@ angular.module('monitorCloud')
 //  .factory('AuthHelper', function($http, LocalService, AccessLevels) {
   .service('AuthService', function($http, localStorageService, config) {
     var self = this;
-//      authorize: function(access) {
-//        if (access === AccessLevels.user) {
-//          return this.isAuthenticated();
-//        } else {
-//          return true;
-//        }
-//      },
-//      isAuthenticated: function() {
-//        return LocalService.get('auth_token');
-//      },
+    self.isAdmin = function(){
+      return true;
+    },
+
+//    self.authorize = function(access) {
+//      if (access === AccessLevels.user) {
+//        return this.isAuthenticated();
+//      } else {
+//        return true;
+//      }
+//    },
+//
+//    self.isAuthenticated = function() {
+//      return LocalService.get('auth_token');
+//    },
+
     self.getCurrentUser = function(){
       return localStorageService.get('user');
     };
@@ -73,7 +79,7 @@ angular.module('monitorCloud')
   })
 
   .config(function($httpProvider){
-//    $httpProvider.interceptors.push("AuthInterceptor");
+    $httpProvider.interceptors.push("AuthInterceptor");
   });
 
 

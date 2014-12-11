@@ -16,7 +16,7 @@ angular.module( 'monitorCloud.home', [])
     });
   })
 
-  .controller('HomeCtrl', function HomeController( $scope, titleService, $http ) {
+  .controller('HomeCtrl', function HomeController( $scope, titleService, $http, notify ) {
     titleService.setTitle('Home');
     var self = $scope;
 

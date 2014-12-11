@@ -6,6 +6,8 @@ angular.module( 'monitorCloud', [
   'ui.bootstrap',
   'w5c.validator',
   'templates-app',
+  'permission',
+  'cgNotify',
   'services',
   'models',
 
@@ -34,10 +36,25 @@ angular.module( 'monitorCloud', [
     $locationProvider.html5Mode(true);
   })
 
-  .run( function() {
+  .run( function(Permission, AuthService, $rootScope, notify) {
     moment.lang('zh-cn'); // en
+
+    Permission.defineRole('admin', function (stateParams) {
+      if(AuthService.isAdmin()) {
+        return false; // Is anonymous
+      }
+      return false;
+    });
+
+    notify.config({duration: 3000});
+
+    $rootScope.$on("$stateChangePermissionDenied", function(){
+      console.warn('你权限不够哈1');
+      //todo: use alert in IE
+      notify({message: '对不起，您的权限不够哈 !', classes: "alert-danger"});
+    })
   })
 
   .controller( 'AppCtrl', function AppCtrl ( $scope, config ) {
     config.currentUser = window.currentUser;
-});
+  });
