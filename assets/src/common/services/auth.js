@@ -28,7 +28,7 @@ angular.module('monitorCloud')
         .success(function(response) {
           localStorageService.set("user", response.user);
           localStorageService.set("auth_token", response.token);
-        });
+        })
     };
 
     self.logout = function() {
@@ -42,16 +42,10 @@ angular.module('monitorCloud')
     self.register = function(userinfo) {
 //        localStorageService.remove('auth_token');
       return $http.post('/auth/register', userinfo)
-        .then(function(response){
-          if(response.data.token) {
-            localStorageService.set("user", response.data.user);
-            self.currentUser = response.data.user;
-            localStorageService.set("auth_token", response.data.token);
-            return 'ok';
-          } else {
-            return 'fail';
-          }
-        })
+        .success(function(response){
+          localStorageService.set("user", response.user);
+          localStorageService.set("auth_token", response.token);
+        });
     };
 
   });

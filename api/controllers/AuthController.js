@@ -26,16 +26,13 @@ var AuthController = {
     }
 
     User.findOne(query).exec(function (err, user) {
-      if (err) {
-        return res.json(401, {err: 'dabase error'});
-      }
+      if (err) { return res.json(401, {err: 'dabase error'}); }
 
       if (!user) {
         if (isEmail) {
           sails.log.error("401, {err: 'Email not found'");
           return res.json(401, {err: 'Email not found'});
         } else {
-//          req.flash('error', 'Error.Passport.Username.NotFound');
           sails.log.error("err: 'Username not found'}");
           return res.json(401, {err: 'Username not found'});
         }
@@ -63,11 +60,9 @@ var AuthController = {
     User.create({email:email, username: username, password: password})
       .exec(function(err, user){
         if (err) {
-          res.json(err.status, {err: err});
-          return;
+          return res.json(401, {err: 'register fail'});
         }
         if (user) {
-//          res.json({msg: "error happend"});
           res.json({user: user.toJSON(), token: sailsTokenAuth.generateToken({sid: user.id})});
         }
     })

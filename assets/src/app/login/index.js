@@ -26,18 +26,18 @@ angular.module( 'monitorCloud.login', [
   .controller( 'LoginCtroller', function AboutController($scope, titleService,$state, AuthService, localStorageService) {
 //    var self = this;
     var self = $scope;
-
     titleService.setTitle('Login');
-//    localStorageService.set("simon", "26 years old");
+
+    self.errors = [];
 
     self.login = function(userinfo){
-//     todo: rename to getjwtToken/getToken
-
+      self.errors = [];
       console.log("login userinfo: ", userinfo);
       AuthService.login(userinfo).success(function(response){
         $state.go('home');
       }).error(function(err){
-        console.log("err: err");
+        console.log("err: " + err.err);
+        self.errors.push(err.err);
       });
     }
 

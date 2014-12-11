@@ -57,14 +57,22 @@ angular.module( 'monitorCloud.register', [])
     self.register = function(userinfo) {
       console.log("before user register: ", userinfo);
 
-      AuthService.register(userinfo).then(function(response){
-        console.log("AuthService.register: ", response);
-        if(response == 'ok') {
-          $state.go('home')
-        } else {
-          self.errors.push("register fails")
-        }
-      })
+      AuthService.register(userinfo).success(function(response){
+        $state.go('home')
+      }).error(function(err){
+        self.errors = [];
+        self.errors.push(err.err);
+      });
+
+//      AuthService.register(userinfo).then(function(response){
+//        console.log("AuthService.register: ", response);
+//        if(response == 'ok') {
+//          $state.go('home')
+//        } else {
+//          self.errors.push("register fails")
+//        }
+//      })
+
     };
 
     // for the form valiation
