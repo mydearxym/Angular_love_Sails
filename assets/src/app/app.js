@@ -4,6 +4,7 @@ angular.module( 'monitorCloud', [
   'angularMoment',
   'lodash',
   'ui.bootstrap',
+  'w5c.validator',
   'templates-app',
   'services',
   'models',
@@ -18,9 +19,9 @@ angular.module( 'monitorCloud', [
   'monitorCloud.messages'
 ])
 
-.config(function( $stateProvider, $urlRouterProvider, $locationProvider) {
+  .config(function( $stateProvider, $urlRouterProvider, $locationProvider) {
     // todo: move it to a route.js
-  // $urlRouterProvider.otherwise( '/home' );
+    // $urlRouterProvider.otherwise( '/home' );
     $urlRouterProvider.otherwise(function ($injector, $location) {
       if ($location.$$url === '/') {
         window.location = '/home';

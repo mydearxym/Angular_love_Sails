@@ -23,20 +23,20 @@ angular.module( 'monitorCloud.login', [
     });
 })
 
-  .controller( 'LoginCtroller', function AboutController(titleService,$state, AuthService, localStorageService) {
-    var self = this;
+  .controller( 'LoginCtroller', function AboutController($scope, titleService,$state, AuthService, localStorageService) {
+//    var self = this;
+    var self = $scope;
 
     titleService.setTitle('Login');
 //    localStorageService.set("simon", "26 years old");
 
-    self.user = {};
-    self.login = function(){
+    self.login = function(userinfo){
 //     todo: rename to getjwtToken/getToken
 
-      AuthService.login(self.user).success(function(response){
-        console.log("todo: $state.go home");
+      console.log("login userinfo: ", userinfo);
+      AuthService.login(userinfo).success(function(response){
+        $state.go('home');
       }).error(function(err){
-//        self.errors.push(err);
         console.log("err: err");
       });
     }

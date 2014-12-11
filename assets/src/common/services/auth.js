@@ -22,8 +22,9 @@ angular.module('monitorCloud')
       return localStorageService.get('user');
     };
 
-    self.login = function(credentials) {
-      return $http.post('/auth/login', credentials)
+    self.login = function(userinfo) {
+      console.log("login userinfo: ", userinfo);
+      return $http.post('/auth/login', userinfo)
         .success(function(response) {
           localStorageService.set("user", response.user);
           localStorageService.set("auth_token", response.token);
@@ -55,48 +56,3 @@ angular.module('monitorCloud')
 
   });
 
-
-//.factory('AuthService', function($http, localStorageService, config) {
-//  return {
-////      authorize: function(access) {
-////        if (access === AccessLevels.user) {
-////          return this.isAuthenticated();
-////        } else {
-////          return true;
-////        }
-////      },
-////      isAuthenticated: function() {
-////        return LocalService.get('auth_token');
-////      },
-//    currentUser: false,
-//
-//    login: function(credentials) {
-//      return $http.post('/auth/login', credentials)
-//        .success(function(response) {
-//          localStorageService.set("user", response.user);
-//          localStorageService.set("auth_token", response.token);
-//        });
-//    },
-//
-//    logout: function() {
-//      // The backend doesn't care about logouts, delete the token and you're good to go.
-//      localStorageService.remove('user');
-//      localStorageService.remove('auth_token');
-//    },
-//
-//    register: function(userinfo) {
-////        localStorageService.remove('auth_token');
-//      return $http.post('/auth/register', userinfo)
-//        .then(function(response){
-//          if(response.data.token) {
-//            localStorageService.set("user", response.data.user);
-//            currentUser = response.data.user;
-//            localStorageService.set("auth_token", response.data.token);
-//            return 'ok';
-//          } else {
-//            return 'fail';
-//          }
-//        })
-//    }
-//  }
-//});
