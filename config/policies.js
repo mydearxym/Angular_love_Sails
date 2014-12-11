@@ -19,6 +19,10 @@ module.exports.policies = {
 
   '*': true,
 
+  'authController': {
+    'testfunc':['tokenAuth']
+  }
+
 //  'auth': {
 //    "*": true
 //  },

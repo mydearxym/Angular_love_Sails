@@ -47,6 +47,34 @@ angular.module('monitorCloud')
           localStorageService.set("auth_token", response.token);
         });
     };
+  })
+  .service("AuthInterceptor", function($q,$injector){
+    var self = this;
+    var localStorageService = $injector.get("localStorageService");
 
+    self.request = function(config) {
+      var token = localStorageService.get('auth_token');
+
+      if( token ) {
+        config.headers.Authorization = 'Bearer ' + token;
+      }
+      return config;
+    },
+
+    self.responseError = function(rejection) {
+      if (response.status === 401 || response.status === 403) {
+        localStorageService.remove('auth_token');
+        var stateService = $injector.get("$state");
+        stateService.go('login');
+      }
+      return $q.reject(rejection);
+    }
+
+  })
+
+  .config(function($httpProvider){
+//    $httpProvider.interceptors.push("AuthInterceptor");
   });
+
+
 

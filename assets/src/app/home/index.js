@@ -16,7 +16,24 @@ angular.module( 'monitorCloud.home', [])
     });
   })
 
-  .controller('HomeCtrl', function HomeController( $scope, titleService ) {
+  .controller('HomeCtrl', function HomeController( $scope, titleService, $http ) {
     titleService.setTitle('Home');
+    var self = $scope;
+
+    self.testfunc = function(){
+
+      $http.get("/auth/testfunc").success(function(response){
+
+        console.log("response: ", response);
+
+      }).error(function(err){
+
+        console.log("err: ", err.err);
+
+      });
+
+      console.log("testfunc btn");
+    }
+
   });
 

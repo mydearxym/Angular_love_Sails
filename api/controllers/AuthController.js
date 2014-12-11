@@ -6,6 +6,10 @@ var validator = require('validator');
 
 var AuthController = {
 
+  testfunc: function(req, res){
+    return res.json({data: 'this is testfunc from sails'});
+  },
+
   login: function (req, res) {
     var email = req.body.email;
     var password = req.body.password;
