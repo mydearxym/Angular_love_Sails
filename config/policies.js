@@ -20,7 +20,7 @@ module.exports.policies = {
   '*': true,
 
   'authController': {
-    'testfunc':['tokenAuth']
+//    'testfunc':['tokenAuth']
   }
 
 //  'auth': {

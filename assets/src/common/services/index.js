@@ -2,5 +2,6 @@ angular.module('services', [
   'services.config',
   'services.utils',
   'services.title',
-  'services.localStorage'
+  'services.localStorage',
+  'services.sailsPromised'
 ]);

@@ -1,74 +1,74 @@
 <br>
 <br>
 
-<div ng-controller="UsersController as UserCtrl">
+
   <div class="well">
     todo: <mark>用户名 账户是否激活 用户组 管理设备 角色 操作 电话</mark>
 
     <br>
     debug:
     <br>
-    {{UserCtrl.users}}
+    {{users}}
 
   </div>
 
   <br>
-    <button class="btn btn-success btn-sm" ng-click="UserCtrl.testget()">
+    <button class="btn btn-success btn-sm" ng-click="testget()">
       testSails
     </button>
   <br>
   <br>
   <table class="table table-bordered table-hover table-condensed">
     <tr style="font-weight: bold">
-      <td style="width:25%">用户名</td>
-      <td style="width:20%">用户编组</td>
-      <td style="width:20%">设备编组</td>
-      <td style="width:20%">角色</td>
+      <td style="width:15%"><i class=""></i>用户名</td>
+      <td style="width:20%">用户ID</td>
+      <td style="width:20%"><i class="fa fa-group text-info"></i>&nbsp;用户编组</td>
+      <td style="width:20%"><i class="fa fa-male text-info"></i>&nbsp;角色</td>
       <td style="width:25%">操作</td>
     </tr>
-    <tr ng-repeat="user in UserCtrl.users">
+    <tr ng-repeat="user in users">
       <td>
         <!-- editable username (text with validation) -->
-        <span class="input-sm" editable-text="user.username" e-name="username" e-form="rowform" onbeforesave="UserCtrl.checkName($data, user.id)" e-required>
+        <span class="input-sm" editable-text="user.username" e-name="username" e-form="rowform" onbeforesave="checkName($data, user.id)" e-required>
           <span class="fa fa-user text-muted">&nbsp;</span>{{ user.username}}
         </span>
       </td>
+
       <td>
-        <!-- editable status (select-local) -->
-        <span class="input-sm" editable-select="user.status" e-name="statush" e-form="rowform" e-ng-options="s.value as s.text for s in UserCtrl.statuses">
-          {{ UserCtrl.showStatus(user) }}
+        <!-- editable username (text with validation) -->
+        <span class="input-sm" e-name="username" e-form="rowform">
+          <span class="fa fa-circle text-muted">&nbsp;</span>{{ user.id}}
+        </span>
+      </td>
+      <td>
+        <!--<span editable-select="user.status" e-name="statush" e-form="rowform" e-ng-options="s.value as s.text for s in UserCtrl.statuses">-->
+        <span editable-select="user.group" e-multiple e-name="statush" e-form="rowform" e-ng-options="s for s in groups">
+          {{ showGroup(user) }}
         </span>
       </td>
 
       <td>
-        <i class="fa fa-inbox text-info"></i>&nbsp;<a href="#" editable-select="user.devs" e-multiple e-form="rowform" e-ng-options="s for s in UserCtrl.devices">
-          {{ UserCtrl.showDevs(user) }}
-        </a>
-      </td>
-
-      <td>
-        <span editable-select="user.role" e-name="role" onshow="UserCtrl.loadRoles()" e-form="rowform" e-ng-options="g for g in UserCtrl.roles">
-          {{ UserCtrl.showRole(user) }}
+        <span editable-select="user.role" e-name="role" onshow="loadRoles()" e-form="rowform" e-ng-options="g for g in roles">
+          {{ showRole(user) }}
         </span>
       </td>
       <td style="white-space: nowrap">
         <!-- form -->
-        <form editable-form name="rowform" onbeforesave="UserCtrl.saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
-          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-success btn-sm">
+        <form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+          <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-success btn-xs">
             确认
           </button>
-          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btn-sm">
+          <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default btn-xs">
             取消
           </button>
         </form>
         <div class="buttons" ng-show="!rowform.$visible">
           <button class="btn btn-primary btn-xs fa fa-edit" ng-click="rowform.$show()">编辑</button>
-          <button class="btn btn-danger btn-xs fa fa-trash" ng-click="UserCtrl.removeUser($index)">删除</button>
+          <button class="btn btn-danger btn-xs fa fa-trash" ng-click="removeUser($index)">删除</button>
         </div>
       </td>
     </tr>
   </table>
 
-</div>
 
 
