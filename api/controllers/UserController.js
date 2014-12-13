@@ -24,11 +24,36 @@ module.exports = {
     res.ok({data: ['admin', 'normal', 'guest']});
   },
 
+  update: function(req, res){
+    var data = req.body.data;
+
+    sails.log.debug("update Ctrl", data);
+
+    User.findOne({id:data.id}).populate("cmgroups").exec(function(err, user){
+      if (err) { console.log(err) };
+
+      console.log("find user: ", user);
+
+      _(data.groups).forEach(function(grp){
+        console.log("adding: ", grp);
+        user.cmgroups.add({name: grp});
+      });
+
+      user.save(function(err){
+        if (err) { console.log(err) };
+      });
+
+    });
+
+    res.json({msg: "this is update"});
+  },
+
   create: function (req, res) {
     var model = {
       username: req.param('username'),
       email: req.param('email'),
       first_name: req.param('first_name')
+
     };
 
     sails.log.info("UserCtrl create degian");

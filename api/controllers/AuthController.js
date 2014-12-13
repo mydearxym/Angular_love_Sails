@@ -61,8 +61,10 @@ var AuthController = {
     var username = req.body.username;
     var email = req.body.email;
     var password = req.body.password;
+//    var group = req.body.group || "defaultGroup"// todo: maybe this is a array
 
 //    todo: check confirmPassword too
+//    User.create({email:email, username: username, password: password})
     User.create({email:email, username: username, password: password})
       .exec(function(err, user){
         if (err) {

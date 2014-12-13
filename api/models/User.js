@@ -25,6 +25,11 @@ module.exports = {
       defaultsTo: ["infomedia"]
     },
 
+    cmgroups: {
+      collection: "cmgroup",
+      via: "members"
+    },
+
     password: {
       type: "string"
     },
@@ -96,19 +101,19 @@ module.exports = {
     });
   },
 
-
-
   getAll: function() {
     return User.find()
-    .then(function (models) {
-      return [models];
-    });
+      .populate("cmgroups")
+      .then(function (models) {
+        return [models];
+      });
   },
 
   getOne: function(id) {
     return User.findOne(id)
-    .then(function (model) {
-      return [model];
-    });
+//      .populate("cmgroups")
+      .then(function (model) {
+        return [model];
+      });
   }
 };

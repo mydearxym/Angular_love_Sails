@@ -17,7 +17,11 @@ angular.module( 'monitorCloud.users', [
         // but the two method both work
 //        return $sailsPromised.get("/api/user");
         return $http.get("/api/user");
+      },
+      usergroups: function($http) {
+        return $http.get('/api/cmgroup/names');
       }
+
     },
     views: {
       "main": {
@@ -33,7 +37,7 @@ angular.module( 'monitorCloud.users', [
   });
 })
 
-  .controller( 'UsersController', function AboutController( $scope, titleService,$filter,$http, $sails, userdata ) {
+  .controller( 'UsersController', function AboutController($scope, titleService,$filter,$http, $sails, userdata, usergroups) {
     titleService.setTitle('users');
 //    var self = this;
     var self = $scope;
@@ -55,27 +59,9 @@ angular.module( 'monitorCloud.users', [
         });
     };
 
+    console.log("get usergroups: ", usergroups.data);
 
-//    self.users = [
-//      {id: 1, username: 'xym1', group: "group 1", role: "guest", devs: ["d1", "d11", "d111"]},
-//      {id: 2, username: 'xym2', group: "group 2", role: "guest", devs: ["d2"]},
-//      {id: 3, username: 'xym3', group: "group 3", role: "guest", devs: ["d3"]}
-//    ];
-
-//    self.statuses = [
-//      {value: 1, text: 'status1'},
-//      {value: 2, text: 'status2'},
-//      {value: 3, text: 'status3'},
-//      {value: 4, text: 'status4'}
-//    ];
-
-    self.groups = [
-      'group 1',
-      'group 2',
-      'group 3',
-      'group 4',
-      'group 5'
-    ];
+    self.groups = usergroups.data;
 
     self.devices = [
       "device1",
@@ -88,6 +74,7 @@ angular.module( 'monitorCloud.users', [
     ];
 
     self.roles = [];
+
 
     self.loadRoles = function() {
       return self.roles.length ? null : $sails.get("/api/user/roles").success(function(data) {
@@ -134,10 +121,10 @@ angular.module( 'monitorCloud.users', [
 
     self.saveUser = function(data, id) {
       //$scope.user not updated yet
-      console.log("before saveUser: ", data);
-      angular.extend(data, {id: id});
-//      todo: post to db back end
-//      return $http.post('/saveUser', data);
+      _.extend(data, {id: id});
+      console.log("before saveUser(extend): ", data);
+//      todo: make it sub/pub as realtime
+      $sails.post("/api/user/update/"+id, {data: data});
     };
 
     // remove user

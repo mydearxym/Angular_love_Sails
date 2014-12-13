@@ -48,14 +48,15 @@ module.exports.routes = {
 //  'post /auth/local': 'AuthController.callback',
 //  'post /auth/local/:action': 'AuthController.callback',
 
+  'get /api/cmgroup/names': 'CmgroupController.getAllName',
   'get /api/user/roles': 'UserController.getRoles',
 
+  'post /api/user/update/:id': 'UserController.update',
   'get /api/user/:id/activate/:token': "UserController.activate",
   'get /api/user/reset' : "UserController.reset",
   'get /api/user/resetemail' : "UserController.resetEmail",
   'get /api/user/:id/resetemailcallback/:token' : "UserController.resetEmailCallback",
   'post /api/user/updatepassword': 'UserController.updatePassword',
-
 
   'get /api/user': 'UserController.getAll',
   'get /api/user/:id': 'UserController.getOne',
