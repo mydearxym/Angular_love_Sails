@@ -7,6 +7,15 @@
 module.exports = function(req, res, next) {
   var token;
 
+  if(req.isSocket){
+
+    sails.log.info("is socket connect ha");
+//    sails.log.info("socket: ", req.socket);
+
+//    return res.json(401, {err: 'This socket is not Authorized'});
+    next();
+  }
+
   if (req.headers && req.headers.authorization) {
     var parts = req.headers.authorization.split(' ');
     if (parts.length == 2) {
@@ -24,6 +33,7 @@ module.exports = function(req, res, next) {
     // We delete the token from param to not mess with blueprints
     delete req.query.token;
   } else {
+    sails.log.error("No Authorization header was found");
     return res.json(401, {err: 'No Authorization header was found'});
   }
 

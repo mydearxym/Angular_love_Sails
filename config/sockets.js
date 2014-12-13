@@ -15,9 +15,9 @@ module.exports.sockets = {
   // Keep in mind that Sails' RESTful simulation for sockets 
   // mixes in socket.io events for your routes and blueprints automatically.
   onConnect: function(session, socket) {
-
     // By default, do nothing.
-    
+//    socket.emit('err', " @@ reject you for no reasion");
+//    socket.
   },
 
   // This custom onDisconnect function will be run each time a socket disconnects
@@ -103,18 +103,19 @@ module.exports.sockets = {
   // Primarily because of this situation, as well as a handful of other advanced
   // use cases, Sails allows you to override the authorization behavior 
   // with your own custom logic by specifying a function, e.g:
-  /*
-    authorization: function authorizeAttemptedSocketConnection(reqObj, cb) {
 
-        // Any data saved in `handshake` is available in subsequent requests
+//  authorization: function authorizeAttemptedSocketConnection(reqObj, cb) {
+//    cb(null, true);
+//    cb(null, false);
+    // Any data saved in `handshake` is available in subsequent requests
         // from this as `req.socket.handshake.*`
 
         //
         // to allow the connection, call `cb(null, true)`
         // to prevent the connection, call `cb(null, false)`
         // to report an error, call `cb(err)`
-    }
-  */
+//  },
+
   authorization: true,
 
   // Match string representing the origins that are allowed to connect to the Socket.IO server
@@ -125,15 +126,18 @@ module.exports.sockets = {
 
   // When client closes connection, the # of seconds to wait before attempting a reconnect.
   // This value is sent to the client after a successful handshake.
-  'close timeout': 60,
+//  'close timeout': 60,
+  'close timeout': 120,
 
   // The # of seconds between heartbeats sent from the client to the server
   // This value is sent to the client after a successful handshake.
-  'heartbeat timeout': 60,
+//  'heartbeat timeout': 60,
+  'heartbeat timeout': 120,
 
   // The max # of seconds to wait for an expcted heartbeat before declaring the pipe broken
   // This number should be less than the `heartbeat timeout`
-  'heartbeat interval': 25,
+//  'heartbeat interval': 25,
+  'heartbeat interval': 60,
 
   // The maximum duration of one HTTP poll-
   // if it exceeds this limit it will be closed.

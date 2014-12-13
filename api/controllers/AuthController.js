@@ -7,6 +7,8 @@ var validator = require('validator');
 var AuthController = {
 
   testfunc: function(req, res){
+    console.log("inside testfunc: ", req.body.hello);
+
     return res.json({data: 'this is testfunc from sails'});
   },
 

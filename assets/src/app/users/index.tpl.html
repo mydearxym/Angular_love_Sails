@@ -29,13 +29,13 @@
     <tr ng-repeat="user in UserCtrl.users">
       <td>
         <!-- editable username (text with validation) -->
-        <span editable-text="user.username" e-name="username" e-form="rowform" onbeforesave="UserCtrl.checkName($data, user.id)" e-required>
+        <span class="input-sm" editable-text="user.username" e-name="username" e-form="rowform" onbeforesave="UserCtrl.checkName($data, user.id)" e-required>
           <span class="fa fa-user text-muted">&nbsp;</span>{{ user.username}}
         </span>
       </td>
       <td>
         <!-- editable status (select-local) -->
-        <span editable-select="user.status" e-name="statush" e-form="rowform" e-ng-options="s.value as s.text for s in UserCtrl.statuses">
+        <span class="input-sm" editable-select="user.status" e-name="statush" e-form="rowform" e-ng-options="s.value as s.text for s in UserCtrl.statuses">
           {{ UserCtrl.showStatus(user) }}
         </span>
       </td>

@@ -29,7 +29,6 @@ angular.module('monitorCloud')
     };
 
     self.login = function(userinfo) {
-      console.log("login userinfo: ", userinfo);
       return $http.post('/auth/login', userinfo)
         .success(function(response) {
           localStorageService.set("user", response.user);
@@ -68,7 +67,7 @@ angular.module('monitorCloud')
     },
 
     self.responseError = function(rejection) {
-      if (response.status === 401 || response.status === 403) {
+      if (rejection.status === 401 || rejection.status === 403) {
         localStorageService.remove('auth_token');
         var stateService = $injector.get("$state");
         stateService.go('login');

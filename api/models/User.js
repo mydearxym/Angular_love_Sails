@@ -7,15 +7,28 @@ module.exports = {
       required: true,
       unique: true
     },
+
     email: {
       type: 'email',
       required: true,
       unique: true
     },
 
+    role: {
+      type: "string",
+      enum: ["normal", "groupAdmin", "superadmin"],
+      defaultsTo: "normal"
+    },
+
+    group: {
+      type: "array",
+      defaultsTo: ["infomedia"]
+    },
+
     password: {
       type: "string"
     },
+
     activated: {
       type: 'boolean',
       defaultsTo: false
@@ -24,19 +37,14 @@ module.exports = {
     activationToken: {
       type: 'string'
     },
+
     resetPassToken: {
       type: 'string'
-    },
-
-    nickname: {
-      type: 'string'
-//      required: true
     },
 
     message_count: {
       type: 'number'
     },
-
 
     // A User can have many messages
     messages: {

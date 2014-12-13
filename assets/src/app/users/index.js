@@ -2,8 +2,8 @@ angular.module( 'monitorCloud.users', [
   'xeditable'
 ]).run(function(editableOptions, editableThemes){
   editableOptions.theme = 'bs3';
-  editableThemes.bs3.inputClass = 'input-xs';
-  editableThemes.bs3.buttonsClass = 'btn-xs';
+  editableThemes.bs3.inputClass = 'input-sm';
+  editableThemes.bs3.buttonsClass = 'btn-sm';
   editableThemes['default'].submitTpl = '<button type="submit">确定</button>';
 })
 
