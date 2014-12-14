@@ -33,9 +33,9 @@ module.exports = {
       if (err) { console.log(err) };
 
 //      console.log("find user: ", user);
-//      user.role = {name: data.rolename, id: data.user.id};
-//      user.role =
+//      user.role = {name: data.role, id: data.user.id};
 
+      user.role = data.role; // this data.role is roleID
       _(data.groups).forEach(function(grpid){
         console.log("adding: ", grpid);
 //        user.cmgroups.add({name: grp});

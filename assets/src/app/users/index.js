@@ -72,6 +72,7 @@ angular.module( 'monitorCloud.users', [
     ];
 
     self.roles = [];
+    self.rolesWithId = [];
     self.groups = [];
     self.groupsWithId = [];
 
@@ -87,15 +88,23 @@ angular.module( 'monitorCloud.users', [
 
     self.loadRoles = function() {
       return self.roles.length ? null : $sails.get("/api/role/names").success(function(data) {
-        console.log("loadRoles: ", data);
-        self.roles = data;
+        console.log("loadRoles 2: ", data);
+        self.rolesWithId = data;
+        self.roles = _.pluck(data, 'name');
+//        console.log("loadRoles roles: ", self.roles);
+
       }).error(function(data){
         console.log("sails get error: ", data);
       });
     };
 
     self.showRole = function(user) {
-      return user.role || 'not set3';
+      if(_.isUndefined(user.role)){
+        return "not Set ha";
+      } else {
+        return user.role.name;
+      }
+//      return user.role.name? user.role.name: 'not set3';
     };
 
     self.showGroup = function(user) {
@@ -103,9 +112,7 @@ angular.module( 'monitorCloud.users', [
       if (_.isUndefined(user.group)){
         return "Not set."
       } else {
-//        console.log("user cmgroups ---|--> ", _.pluck(user.cmgroups, 'name'));
         return user.group.length ? _.pluck(user.cmgroups, 'name').join(", "): "not set";
-//        return ;
       }
     };
 
@@ -117,11 +124,16 @@ angular.module( 'monitorCloud.users', [
 
     self.saveUser = function(data, id) {
       //$scope.user not updated yet
-      var groupids = []
+      var groupids = [];
+      var role = "";
       _(data.groups).map(function(name){
 //        console.log("name(map): ", name);
+        //todo: if not select any group, it's gonna crashed
         groupids.push(_.find(self.groupsWithId, {name:name}).id);
       });
+
+      role = _.find(self.rolesWithId, {name: data.role}).id;
+      data.role = role;
 //      delete data.groups;
       data.groups = groupids;
       _.extend(data, {id: id});

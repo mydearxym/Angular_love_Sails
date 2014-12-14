@@ -24,10 +24,7 @@ module.exports = {
       });
   },
 
-
-
   getAllName: function(req, res) {
-
 //    return res.json({msg: 'all the roles haha'});
     Role.getAllName()
       .then(function(models) {
@@ -37,9 +34,6 @@ module.exports = {
         if (err) { console.log(err) };
       });
   }
-
-
-
 
 };
 

@@ -35,17 +35,23 @@ module.exports = {
 
   getAllName: function(){
 
-    return Cmgroup.find()
-//      .populate("members")
-      .then(function (models) {
-//        return _.pluck(models,'members');
-//        return _.pluck(models,'name');
+//    return Cmgroup.find()
+//      .then(function (models) {
+////        return _.pluck(models,'name');
+//        _(models).forEach(function(model){
+//          delete model.host;
+//        });
+//        return models;
+//      });
 
-        _(models).forEach(function(model){
-          delete model.host;
-        });
-        return models;
+
+    return Cmgroup.find()
+      .populate("members")
+      .then(function (models) {
+        return _.pluck(models,'members');
       });
+
+
   }
 
 };

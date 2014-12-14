@@ -32,7 +32,7 @@ var AuthController = {
     }
 
     User.findOne(query).exec(function (err, user) {
-      if (err) { return res.json(401, {err: 'dabase error'}); }
+      if (err) { return res.json(401, {err: 'dabase error'}) }
 
       if (!user) {
         if (isEmail) {

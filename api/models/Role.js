@@ -25,7 +25,6 @@ module.exports = {
       delete obj.createdAt;
       return obj;
     }
-
   },
 
   getAllName: function(){
@@ -34,8 +33,11 @@ module.exports = {
 //      .populate("members")
       .then(function (models) {
 //        return _.pluck(models,'members');
-        return _.pluck(models,'name');
-//        return models;
+//        return _.pluck(models,'name');
+//        _(models).forEach(function(model){
+//          delete model.host;
+//        });
+        return models;
       });
   }
 

@@ -108,6 +108,7 @@ module.exports = {
   getAll: function() {
     return User.find()
       .populate("cmgroups")
+      .populate("role")
       .then(function (models) {
         return [models];
       });
