@@ -43,6 +43,10 @@ module.exports.routes = {
   'get /api/cmgroup/names': 'CmgroupController.getAllName',
   'post /api/cmgroup/create': 'CmgroupController.create',
 
+
+  'get /api/role/names': 'RoleController.getAllName',
+  'post /api/role/create': 'RoleController.create',
+
   'get /api/user/roles': 'UserController.getRoles',
 
   'post /api/user/update/:id': 'UserController.update',

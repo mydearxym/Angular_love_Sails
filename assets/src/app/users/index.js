@@ -73,20 +73,22 @@ angular.module( 'monitorCloud.users', [
 
     self.roles = [];
     self.groups = [];
+    self.groupsWithId = [];
 
     // todo: listen the ongroup model
     self.loadGroups = function(){
       return self.groups.length ? null: $sails.get("/api/cmgroup/names").success(function(data){
-        self.groups = data;
+        self.groupsWithId = data;
+        self.groups = _.pluck(data, 'name');
       }).error(function(err){
         if (err) { console.log(err) };
       });
     };
 
     self.loadRoles = function() {
-      return self.roles.length ? null : $sails.get("/api/user/roles").success(function(data) {
+      return self.roles.length ? null : $sails.get("/api/role/names").success(function(data) {
         console.log("loadRoles: ", data);
-        self.roles = data.data;
+        self.roles = data;
       }).error(function(data){
         console.log("sails get error: ", data);
       });
@@ -101,23 +103,10 @@ angular.module( 'monitorCloud.users', [
       if (_.isUndefined(user.group)){
         return "Not set."
       } else {
-        return user.group.length ? user.group.join(", "): "not set";
+//        console.log("user cmgroups ---|--> ", _.pluck(user.cmgroups, 'name'));
+        return user.group.length ? _.pluck(user.cmgroups, 'name').join(", "): "not set";
+//        return ;
       }
-    };
-
-    self.showDevs = function(user) {
-
-//      var selected = [];
-//      angular.forEach(self.devices, function(s) {
-//        console.log("s: ", s);
-//
-//        if (user.devs.indexOf(s.value) >= 0) {
-//          selected.push(s.text);
-//        }
-//      });
-//      return selected.length ? selected.join(', ') : 'Not set';
-//      return user.devs.length ? user.devs.join(", "): "not set";
-
     };
 
     self.checkName = function(data, id) {
@@ -128,6 +117,13 @@ angular.module( 'monitorCloud.users', [
 
     self.saveUser = function(data, id) {
       //$scope.user not updated yet
+      var groupids = []
+      _(data.groups).map(function(name){
+//        console.log("name(map): ", name);
+        groupids.push(_.find(self.groupsWithId, {name:name}).id);
+      });
+//      delete data.groups;
+      data.groups = groupids;
       _.extend(data, {id: id});
       console.log("before saveUser(extend): ", data);
 //      todo: make it sub/pub as realtime
@@ -136,8 +132,7 @@ angular.module( 'monitorCloud.users', [
 
     // remove user
     self.removeUser = function(index) {
-      console.log("");
-//      self.users.splice(index, 1);
+      console.log("remove User");
     };
 
   });

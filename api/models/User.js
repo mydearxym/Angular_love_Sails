@@ -14,10 +14,14 @@ module.exports = {
       unique: true
     },
 
+//    role: {
+//      type: "string",
+//      enum: ["normal", "groupAdmin", "superadmin"],
+//      defaultsTo: "normal"
+//    },
+
     role: {
-      type: "string",
-      enum: ["normal", "groupAdmin", "superadmin"],
-      defaultsTo: "normal"
+      model: 'role'
     },
 
     group: {

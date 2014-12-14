@@ -32,16 +32,18 @@ module.exports = {
     User.findOne({id:data.id}).populate("cmgroups").exec(function(err, user){
       if (err) { console.log(err) };
 
-      console.log("find user: ", user);
+//      console.log("find user: ", user);
+//      user.role = {name: data.rolename, id: data.user.id};
+//      user.role =
 
-      _(data.groups).forEach(function(grp){
-        console.log("adding: ", grp);
+      _(data.groups).forEach(function(grpid){
+        console.log("adding: ", grpid);
 //        user.cmgroups.add({name: grp});
-        user.cmgroups.add({id: '548ce7587f156e00005b80d4'}); // add group id
+        user.cmgroups.add({id: grpid}); // add group id
       });
 
       user.save(function(err){
-        if (err) { console.log(err) };
+        if (err) { return res.json(401, {err: err}) };
       });
 
     });
