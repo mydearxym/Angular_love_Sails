@@ -40,15 +40,9 @@ module.exports.routes = {
   'post /auth/register': 'AuthController.register',
   'get /auth/testfunc': 'AuthController.testfunc',
 
-
-//  'get /login': 'AuthController.login',
-//  'get /logout': 'AuthController.logout',
-//  'get /register': 'AuthController.register',
-
-//  'post /auth/local': 'AuthController.callback',
-//  'post /auth/local/:action': 'AuthController.callback',
-
   'get /api/cmgroup/names': 'CmgroupController.getAllName',
+  'post /api/cmgroup/create': 'CmgroupController.create',
+
   'get /api/user/roles': 'UserController.getRoles',
 
   'post /api/user/update/:id': 'UserController.update',

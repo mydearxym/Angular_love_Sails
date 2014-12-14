@@ -11,12 +11,11 @@ module.exports = {
     name: {
       type: 'string',
       required: true
-      //todo add other attrs to see the return value
     },
 
     host: {
       type: "string",
-      defaultTo: "noOne"
+      defaultsTo: "noOne"
     },
 
     members: {
@@ -39,6 +38,7 @@ module.exports = {
     return Cmgroup.find()
 //      .populate("members")
       .then(function (models) {
+//        return _.pluck(models,'members');
         return _.pluck(models,'name');
 //        return models;
       });

@@ -36,7 +36,8 @@ module.exports = {
 
       _(data.groups).forEach(function(grp){
         console.log("adding: ", grp);
-        user.cmgroups.add({name: grp});
+//        user.cmgroups.add({name: grp});
+        user.cmgroups.add({id: '548ce7587f156e00005b80d4'}); // add group id
       });
 
       user.save(function(err){

@@ -17,10 +17,10 @@ angular.module( 'monitorCloud.users', [
         // but the two method both work
 //        return $sailsPromised.get("/api/user");
         return $http.get("/api/user");
-      },
-      usergroups: function($http) {
-        return $http.get('/api/cmgroup/names');
       }
+//      usergroups: function($http) {
+//        return $http.get('/api/cmgroup/names');
+//      }
 
     },
     views: {
@@ -37,7 +37,7 @@ angular.module( 'monitorCloud.users', [
   });
 })
 
-  .controller( 'UsersController', function AboutController($scope, titleService,$filter,$http, $sails, userdata, usergroups) {
+  .controller( 'UsersController', function AboutController($scope, titleService,$filter,$http, $sails, userdata) {
     titleService.setTitle('users');
 //    var self = this;
     var self = $scope;
@@ -59,9 +59,7 @@ angular.module( 'monitorCloud.users', [
         });
     };
 
-    console.log("get usergroups: ", usergroups.data);
-
-    self.groups = usergroups.data;
+//    self.groups = usergroups.data;
 
     self.devices = [
       "device1",
@@ -74,7 +72,16 @@ angular.module( 'monitorCloud.users', [
     ];
 
     self.roles = [];
+    self.groups = [];
 
+    // todo: listen the ongroup model
+    self.loadGroups = function(){
+      return self.groups.length ? null: $sails.get("/api/cmgroup/names").success(function(data){
+        self.groups = data;
+      }).error(function(err){
+        if (err) { console.log(err) };
+      });
+    };
 
     self.loadRoles = function() {
       return self.roles.length ? null : $sails.get("/api/user/roles").success(function(data) {
