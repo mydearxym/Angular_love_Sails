@@ -1,5 +1,15 @@
 # Angular love sails #
 
+this is repo is inspired by sailng project 
+
+docs :
+[express.js](http://expressjs.com/4x/api.html)
+[sails.js](http://www.sailsjs.org/#/documentation/concepts)
+[database ORM](https://github.com/balderdashy/waterline)
+
+
+
+
 
 ## To get up and running ##
 ```bash
