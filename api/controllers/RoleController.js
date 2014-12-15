@@ -17,7 +17,7 @@ module.exports = {
 
     Role.create(model)
       .exec(function(err, model) {
-        if (err) { return res.json(401, {err: 'create role failed' })  }
+        if (err) { return res.json(401, {err: 'create role failed'}) }
         sails.log.debug("role create done");
 
         res.json(model);

@@ -16,8 +16,9 @@
                 <a href="{{navItem.url}}" class="{{navItem.cssClass}}">{{navItem.title}}</a>
             </li>
 
-            <li class="divider-vertical"></li>
 
+
+            <li class="divider-vertical"></li>
             <li ng-if="currentUser" id="current-user-dropdown" class="dropdown">
                 <div class="btn-group">
                     <a class="btn btn-default btn-sm dropdown-toggle">
@@ -28,8 +29,28 @@
                     </ul>
                 </div>
             </li>
-            
           </ul>
+
+          <!--<a class="navbar-text navbar-right">hello</a>-->
+          <div class="btn-group pull-right" style="margin-top:15px">
+            <button type="button" class="btn btn-danger btn-xs">Action</button>
+            <button type="button" class="btn btn-danger btn-xs dropdown-toggle" data-toggle="dropdown">
+              <span class="caret"></span>
+              <span class="sr-only">Toggle Dropdown</span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <li><a href="#">Action</a></li>
+              <li><a href="#">Another</a></li>
+              <li class="divider"></li>
+              <li><a href="#"><i class="fa fa-sign-out"></i>&nbsp;登出</a></li>
+            </ul>
+          </div>
+
+          <p class="navbar-text navbar-right">
+            <a href="/register" class="navbar-link btn btn-sm btn-signup">注册</a>
+            <a href="/login" class="navbar-link btn btn-sm btn-login">登陆</a>
+            <a href="#" class="navbar-link btn btn-sm btn-login">xxx@qq.com</a>&nbsp;
+          </p>
         </div><!--/.nav-collapse -->
       </div>
     </div>
