@@ -24,10 +24,10 @@ module.exports = {
       model: 'role'
     },
 
-    group: {
-      type: "array",
-      defaultsTo: ["infomedia"]
-    },
+//    group: {
+//      type: "array",
+//      defaultsTo: ["infomedia"]
+//    },
 
     cmgroups: {
       collection: "cmgroup",

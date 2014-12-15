@@ -37,7 +37,7 @@ angular.module( 'monitorCloud.users', [
   });
 })
 
-  .controller( 'UsersController', function AboutController($scope, titleService,$filter,$http, $sails, userdata) {
+  .controller( 'UsersController', function AboutController($scope, titleService,AuthService, $filter,$http, $sails, userdata) {
     titleService.setTitle('users');
 //    var self = this;
     var self = $scope;
@@ -81,17 +81,18 @@ angular.module( 'monitorCloud.users', [
       return self.groups.length ? null: $sails.get("/api/cmgroup/names").success(function(data){
         self.groupsWithId = data;
         self.groups = _.pluck(data, 'name');
+        console.log("load groups: ", self.groups);
       }).error(function(err){
         if (err) { console.log(err) };
       });
     };
 
     self.loadRoles = function() {
-      return self.roles.length ? null : $sails.get("/api/role/names").success(function(data) {
+      return self.roles.length ? null : $sails.get("/api/role/names", {token: AuthService.getToken()}).success(function(data) {
         console.log("loadRoles 2: ", data);
         self.rolesWithId = data;
         self.roles = _.pluck(data, 'name');
-//        console.log("loadRoles roles: ", self.roles);
+        console.log("loadRoles roles: ", self.roles);
 
       }).error(function(data){
         console.log("sails get error: ", data);

@@ -8,15 +8,18 @@ module.exports = function(req, res, next) {
   var token;
 
   if(req.isSocket){
-
-    sails.log.info("is socket connect ha");
+    token = req.body.token;
+    sails.log.info("is socket connect token: ", token);
 //    sails.log.info("socket: ", req.socket);
 
-//    return res.json(401, {err: 'This socket is not Authorized'});
-    next();
-  }
+    sailsTokenAuth.verifyToken(token, function(err, token) {
+      if (err) return res.json(401, {err: 'The token is not valid'});
 
-  if (req.headers && req.headers.authorization) {
+      req.token = token.sid; // todo: to think better idea
+      next();
+    });
+//    return res.json(401, {err: 'This socket is not Authorized'});
+  } else if (req.headers && req.headers.authorization) {
     var parts = req.headers.authorization.split(' ');
     if (parts.length == 2) {
       var scheme = parts[0],
@@ -25,6 +28,12 @@ module.exports = function(req, res, next) {
       if (/^Bearer$/i.test(scheme)) {
         token = credentials;
       }
+      sailsTokenAuth.verifyToken(token, function(err, token) {
+        if (err) return res.json(401, {err: 'The token is not valid'});
+        req.token = token.sid; // todo: to think better idea
+        next();
+      });
+
     } else {
       return res.json(401, {err: 'Format is Authorization: Bearer [token]'});
     }
@@ -32,17 +41,25 @@ module.exports = function(req, res, next) {
     token = req.param('token');
     // We delete the token from param to not mess with blueprints
     delete req.query.token;
+
+    sailsTokenAuth.verifyToken(token, function(err, token) {
+      if (err) return res.json(401, {err: 'The token is not valid'});
+
+      req.token = token.sid; // todo: to think better idea
+      next();
+    });
+
   } else {
     sails.log.error("No Authorization header was found");
     return res.json(401, {err: 'No Authorization header was found'});
   }
 
-  sailsTokenAuth.verifyToken(token, function(err, token) {
-    if (err) return res.json(401, {err: 'The token is not valid'});
-
-    req.token = token;
-
-    next();
-  });
+//  sailsTokenAuth.verifyToken(token, function(err, token) {
+//    if (err) return res.json(401, {err: 'The token is not valid'});
+//
+//    req.token = token;
+//
+//    next();
+//  });
 };
 

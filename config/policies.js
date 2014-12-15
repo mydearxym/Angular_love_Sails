@@ -21,7 +21,12 @@ module.exports.policies = {
 
   'authController': {
 //    'testfunc':['tokenAuth']
+  },
+
+  'roleController': {
+//    'getAllName': ['tokenAuth', 'normalRole']
   }
+
 
 //  'auth': {
 //    "*": true

@@ -23,6 +23,9 @@ angular.module('monitorCloud')
 //    self.isAuthenticated = function() {
 //      return LocalService.get('auth_token');
 //    },
+    self.getToken = function() {
+      return localStorageService.get('auth_token');
+    },
 
     self.getCurrentUser = function(){
       return localStorageService.get('user');
