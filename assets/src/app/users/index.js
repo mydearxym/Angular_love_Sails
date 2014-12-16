@@ -103,6 +103,7 @@ angular.module( 'monitorCloud.users', [
       if(_.isUndefined(user.role)){
         return "not Set ha";
       } else {
+//        console.log("showRole name: ", user);
         return user.role.name;
       }
 //      return user.role.name? user.role.name: 'not set3';
