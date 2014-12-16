@@ -8,6 +8,10 @@ angular.module( 'monitorCloud.login', [
       "main": {
         controller: 'LoginCtroller as LoginCtrl',
         templateUrl: 'login/index.tpl.html'
+      },
+      'navbar': {
+        controller: "HeaderCtrl",
+        templateUrl: 'header/index.tpl.html'
       }
     }
   })
@@ -17,7 +21,11 @@ angular.module( 'monitorCloud.login', [
         "main": {
           controller: "LoginCtroller as LoginCtrl",
           templateUrl: 'login/reset.tpl.html'
+        },
 
+        'navbar': {
+          controller: "HeaderCtrl",
+          templateUrl: 'header/index.tpl.html'
         }
       }
     });

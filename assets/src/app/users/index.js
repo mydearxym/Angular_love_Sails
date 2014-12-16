@@ -37,7 +37,7 @@ angular.module( 'monitorCloud.users', [
   });
 })
 
-  .controller( 'UsersController', function AboutController($scope, titleService,AuthService, $filter,$http, $sails, userdata) {
+  .controller( 'UsersController', function UsersController($scope, titleService,AuthService, $filter,$http, $sails, userdata) {
     titleService.setTitle('users');
 //    var self = this;
     var self = $scope;

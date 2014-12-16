@@ -10,10 +10,11 @@ angular.module( 'monitorCloud.header', [
     {title: ' 用户管理', translationKey: 'navigation:users', url:'/users',cssClass: 'fa fa-user'}
   ];
 
-  if (!$scope.currentUser) {
-    navItems.push({title: 'Login', translationKey: 'navigation:login', url: '/login', cssClass: 'login'});
-    navItems.push({title: 'Register', translationKey: 'navigation:register', url: '/register', cssClass: 'register'});
-  }
+//  if (!$scope.currentUser) {
+//    navItems.push({title: 'Login', translationKey: 'navigation:login', url: '/login', cssClass: 'login'});
+//    navItems.push({title: 'Register', translationKey: 'navigation:register', url: '/register', cssClass: 'register'});
+//  }
+
   $scope.navItems = navItems;
 
   $scope.logout = function(){

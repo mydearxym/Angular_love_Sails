@@ -7,6 +7,10 @@ angular.module( 'monitorCloud.register', [])
         "main": {
           controller: 'RegisterCtroller as RegisterCtrl',
           templateUrl: 'register/index.tpl.html'
+        },
+        'navbar': {
+          controller: "HeaderCtrl",
+          templateUrl: 'header/index.tpl.html'
         }
       }
     })
