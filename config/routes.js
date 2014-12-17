@@ -21,6 +21,10 @@
 
 module.exports.routes = {
 
+//for test
+
+  'get /categories/recommendation': 'TestController.getRecommends',
+
 
   // Make the view located at `views/homepage.ejs` (or `views/homepage.jade`, etc. depending on your
   // default view engine) your home page.
