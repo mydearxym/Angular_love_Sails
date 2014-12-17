@@ -328,9 +328,18 @@ module.exports = {
         }
       ]
     })
+  },
+
+  register: function(req, res){
+    var username = req.body.username;
+    var password = req.body.password;
+
+    ChatService.register(username, password, function(err){
+      if (err) { return res.json(401, {error: err}) }
+
+      res.json(200, {msg: 'OK'});
+    })
   }
-
-
 
 };
 
