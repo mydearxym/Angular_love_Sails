@@ -14,20 +14,60 @@ module.exports = {
       unique: true
     },
 
-//    role: {
-//      type: "string",
-//      enum: ["normal", "groupAdmin", "superadmin"],
-//      defaultsTo: "normal"
-//    },
+    phone: {
+      type: 'integer'
+    },
+
+    sex: {
+      type: 'string',
+      enum: ['male', 'female', 'unkown']
+    },
+
+    location: {
+      type: 'array'  // lang and leng
+    },
+
+    interests: {
+      type: "string"
+    },
+
+    friends: {
+      collection: 'user',
+      via: "friends"//check
+    },
+
+    currentchatroom: {
+      model: 'chatroom'
+    },
 
     role: {
       model: 'role'
     },
 
-//    group: {
-//      type: "array",
-//      defaultsTo: ["infomedia"]
-//    },
+    chatroomlist: {
+      collection: 'chatroom',
+      via: 'userlist'
+    },
+
+    chatroomowner: {
+      collection: 'chatroom',
+      via: "owner"
+    },
+
+    chatroommanager: {
+      collection: 'chatroom',
+      via: 'managers'
+    },
+
+    chatroomblack: {
+      collection: 'chatroom',
+      via: 'blacklist'
+    },
+
+    followchatrooms: {
+      collection: 'chatroom',
+      via: 'follows'
+    },
 
     cmgroups: {
       collection: "cmgroup",
