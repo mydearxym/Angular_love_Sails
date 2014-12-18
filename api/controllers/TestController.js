@@ -334,12 +334,44 @@ module.exports = {
     var username = req.body.username;
     var password = req.body.password;
 
-    ChatService.register(username, password, function(err){
+    ChatService.register(username, password, function(err, user){
       if (err) { return res.json(401, {error: err}) }
 
-      res.json(200, {msg: 'OK'});
+      res.json(200, user);
     })
+  },
+
+  createChatGroups: function(req, res) {
+    var owner = req.body.owner;
+    var groupname = req.body.groupname;
+
+    if(_.isUndefined(owner) || _.isUndefined(groupname)){
+      res.json(403, {error: 'request args error'});
+    }
+
+    var members = req.body.members || [];
+    var maxusers = req.body.maxusers || 200;
+
+    var comming_args = {
+      "groupname": groupname,
+      "desc":"create group test by mydearxym",
+      "public": true,
+      "maxusers":maxusers,
+      "owner": owner,
+      "members": members
+    };
+
+//    return res.json(200, comming_args );
+
+    ChatService.createChatGroups(comming_args, function(err, msg){
+      if (err) { return res.json(401, {error: err}); };
+      res.json(200, msg);
+    })
+
   }
+
+  // todo: add a members to group
+
 
 };
 
