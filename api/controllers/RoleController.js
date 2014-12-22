@@ -20,7 +20,7 @@ module.exports = {
         if (err) { return res.json(401, {err: 'create role failed'}) }
         sails.log.debug("role create done");
 
-        res.json(model);
+        res.json(200, model);
       });
   },
 

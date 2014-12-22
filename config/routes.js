@@ -56,6 +56,7 @@ module.exports.routes = {
   'get /api/user/roles': 'UserController.getRoles',
 
   'post /api/user/update/:id': 'UserController.update',
+  'post /api/user/update2': 'UserController.update2',
   'get /api/user/:id/activate/:token': "UserController.activate",
   'get /api/user/reset' : "UserController.reset",
   'get /api/user/resetemail' : "UserController.resetEmail",

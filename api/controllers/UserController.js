@@ -26,14 +26,11 @@ module.exports = {
 
   update: function(req, res){
     var data = req.body.data;
-
     sails.log.debug("update Ctrl", data);
+
 
     User.findOne({id:data.id}).populate("cmgroups").exec(function(err, user){
       if (err) { console.log(err) };
-
-//      console.log("find user: ", user);
-//      user.role = {name: data.role, id: data.user.id};
 
       user.role = data.role; // this data.role is roleID
       _(data.groups).forEach(function(grpid){
@@ -51,12 +48,30 @@ module.exports = {
     res.json({msg: "this is update"});
   },
 
+  update2: function(req, res){
+    var username = req.param('username');
+    var rolename = req.param('role') || "not set" ;
+
+    console.log("find role: ", rolename);
+    Role.findOneByName(rolename).exec(function(err, role){
+//    Role.findOne({name: rolename}).exec(function(err, role){
+      if (err) { console.log(err) };
+      User.findOneByUsername(username).exec(function(err, user){
+        user.role = role;
+        user.save();
+        res.json(200, user);
+      });
+    });
+  },
+
   create: function (req, res) {
     var model = {
       username: req.param('username'),
       email: req.param('email'),
-      first_name: req.param('first_name')
-
+      password: req.param("password"),
+      phone: req.param("phone"),
+      sex: req.param("sex")
+//      first_name: req.param('first_name')
     };
 
     sails.log.info("UserCtrl create degian");
@@ -65,13 +80,14 @@ module.exports = {
         sails.log.info("UserCtrl create done");
 
         if (err) {
-        return console.log(err);
-      }
-      else {
-        User.publishCreate(model.toJSON());
-        res.json(model);
-      }
-    });
+          if (err) { console.log(err) };
+          return res.json(401, {err: err});
+        }
+        else {
+          User.publishCreate(model.toJSON());
+          res.json(model);
+        }
+      });
   },
 
   activate: function(req, res) {

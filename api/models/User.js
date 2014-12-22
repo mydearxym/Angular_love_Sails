@@ -24,7 +24,7 @@ module.exports = {
     },
 
     location: {
-      type: 'array'  // lang and leng
+      type: 'array'  // GeoJSON
     },
 
     interests: {
