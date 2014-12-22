@@ -30,7 +30,7 @@ module.exports = {
   getAllName: function(){
 
     return Role.find()
-//      .populate("members")
+      .populate("members")
       .then(function (models) {
 //        return _.pluck(models,'members');
 //        return _.pluck(models,'name');
